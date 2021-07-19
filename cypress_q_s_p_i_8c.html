@@ -98,8 +98,8 @@ Functions</h2></td></tr>
 <tr class="memitem:adc16476fb359b59689a064e13a0bad3e"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#adc16476fb359b59689a064e13a0bad3e">Cypress_QSPI_WriteEnable</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
 <tr class="memdesc:adc16476fb359b59689a064e13a0bad3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable write operations and wait until effective (blocking)  <a href="cypress_q_s_p_i_8c.html#adc16476fb359b59689a064e13a0bad3e">More...</a><br /></td></tr>
 <tr class="separator:adc16476fb359b59689a064e13a0bad3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a202fc7febd02df3f0cf61d5a14a4e965"><td class="memItemLeft" align="right" valign="top"><a id="a202fc7febd02df3f0cf61d5a14a4e965"></a>
-HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_QSPI_WriteDisable</b> (QSPI_HandleTypeDef *hqspi)</td></tr>
+<tr class="memitem:a202fc7febd02df3f0cf61d5a14a4e965"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#a202fc7febd02df3f0cf61d5a14a4e965">Cypress_QSPI_WriteDisable</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
+<tr class="memdesc:a202fc7febd02df3f0cf61d5a14a4e965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable write operations, terminating any current operation.  <a href="cypress_q_s_p_i_8c.html#a202fc7febd02df3f0cf61d5a14a4e965">More...</a><br /></td></tr>
 <tr class="separator:a202fc7febd02df3f0cf61d5a14a4e965"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae169168fd59c82c3fbb70268634a95a4"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#ae169168fd59c82c3fbb70268634a95a4">Cypress_QSPI_ErrorRecovery</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
 <tr class="memdesc:ae169168fd59c82c3fbb70268634a95a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for program/erase error, and then recover by clearing the SR and disabling the write.  <a href="cypress_q_s_p_i_8c.html#ae169168fd59c82c3fbb70268634a95a4">More...</a><br /></td></tr>
@@ -143,15 +143,15 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
 <tr class="memitem:aa89a3ee770349c7e88797c463f829c57"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#aa89a3ee770349c7e88797c463f829c57">Cypress_QSPI_BulkErase_IT</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
 <tr class="memdesc:aa89a3ee770349c7e88797c463f829c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets <em>all</em> bits in the flash memory to 1 (non-blocking, requires interrupts)  <a href="cypress_q_s_p_i_8c.html#aa89a3ee770349c7e88797c463f829c57">More...</a><br /></td></tr>
 <tr class="separator:aa89a3ee770349c7e88797c463f829c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4437cef97b510c38bf1c1a5275859b46"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#a4437cef97b510c38bf1c1a5275859b46">Cypress_QSPI_Read</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count)</td></tr>
-<tr class="memdesc:a4437cef97b510c38bf1c1a5275859b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data into memory in SPI mode (blocking)  <a href="cypress_q_s_p_i_8c.html#a4437cef97b510c38bf1c1a5275859b46">More...</a><br /></td></tr>
-<tr class="separator:a4437cef97b510c38bf1c1a5275859b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad47c15e7d88ac39f35cae70c95390169"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#ad47c15e7d88ac39f35cae70c95390169">Cypress_QSPI_Read_IT</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count)</td></tr>
-<tr class="memdesc:ad47c15e7d88ac39f35cae70c95390169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data into memory in SPI mode (non-blocking, requires callbacks)  <a href="cypress_q_s_p_i_8c.html#ad47c15e7d88ac39f35cae70c95390169">More...</a><br /></td></tr>
-<tr class="separator:ad47c15e7d88ac39f35cae70c95390169"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab987e7a4a4094db994d8bf09f6df7e5e"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#ab987e7a4a4094db994d8bf09f6df7e5e">Cypress_QSPI_Read_DMA</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count)</td></tr>
-<tr class="memdesc:ab987e7a4a4094db994d8bf09f6df7e5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data directly into memory in SPI mode (non-blocking, requires callbacks)  <a href="cypress_q_s_p_i_8c.html#ab987e7a4a4094db994d8bf09f6df7e5e">More...</a><br /></td></tr>
-<tr class="separator:ab987e7a4a4094db994d8bf09f6df7e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada6dc13184a884bd50be5397099781c2"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#ada6dc13184a884bd50be5397099781c2">Cypress_QSPI_Read</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)</td></tr>
+<tr class="memdesc:ada6dc13184a884bd50be5397099781c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data into memory in SPI mode (blocking)  <a href="cypress_q_s_p_i_8c.html#ada6dc13184a884bd50be5397099781c2">More...</a><br /></td></tr>
+<tr class="separator:ada6dc13184a884bd50be5397099781c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab889db27b1cf34f47a99ed8823f495"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#a3ab889db27b1cf34f47a99ed8823f495">Cypress_QSPI_Read_IT</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)</td></tr>
+<tr class="memdesc:a3ab889db27b1cf34f47a99ed8823f495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data into memory in SPI mode (non-blocking, requires callbacks)  <a href="cypress_q_s_p_i_8c.html#a3ab889db27b1cf34f47a99ed8823f495">More...</a><br /></td></tr>
+<tr class="separator:a3ab889db27b1cf34f47a99ed8823f495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefdae2bfbd6fd6475d89c56657c317da"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#aefdae2bfbd6fd6475d89c56657c317da">Cypress_QSPI_Read_DMA</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)</td></tr>
+<tr class="memdesc:aefdae2bfbd6fd6475d89c56657c317da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data directly into memory in SPI mode (non-blocking, requires callbacks)  <a href="cypress_q_s_p_i_8c.html#aefdae2bfbd6fd6475d89c56657c317da">More...</a><br /></td></tr>
+<tr class="separator:aefdae2bfbd6fd6475d89c56657c317da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25d071a350ab183117b6c710106879ca"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#a25d071a350ab183117b6c710106879ca">Cypress_QSPI_ReadQuad</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)</td></tr>
 <tr class="memdesc:a25d071a350ab183117b6c710106879ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data into memory using QSPI (blocking)  <a href="cypress_q_s_p_i_8c.html#a25d071a350ab183117b6c710106879ca">More...</a><br /></td></tr>
 <tr class="separator:a25d071a350ab183117b6c710106879ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -680,8 +680,8 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
 
 </div>
 </div>
-<a id="a4437cef97b510c38bf1c1a5275859b46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4437cef97b510c38bf1c1a5275859b46">&#9670;&nbsp;</a></span>Cypress_QSPI_Read()</h2>
+<a id="ada6dc13184a884bd50be5397099781c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada6dc13184a884bd50be5397099781c2">&#9670;&nbsp;</a></span>Cypress_QSPI_Read()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -701,7 +701,7 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>dest</em>, </td>
         </tr>
         <tr>
@@ -732,8 +732,8 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
 
 </div>
 </div>
-<a id="ab987e7a4a4094db994d8bf09f6df7e5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab987e7a4a4094db994d8bf09f6df7e5e">&#9670;&nbsp;</a></span>Cypress_QSPI_Read_DMA()</h2>
+<a id="aefdae2bfbd6fd6475d89c56657c317da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefdae2bfbd6fd6475d89c56657c317da">&#9670;&nbsp;</a></span>Cypress_QSPI_Read_DMA()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -753,7 +753,7 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>dest</em>, </td>
         </tr>
         <tr>
@@ -785,8 +785,8 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
 
 </div>
 </div>
-<a id="ad47c15e7d88ac39f35cae70c95390169"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad47c15e7d88ac39f35cae70c95390169">&#9670;&nbsp;</a></span>Cypress_QSPI_Read_IT()</h2>
+<a id="a3ab889db27b1cf34f47a99ed8823f495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ab889db27b1cf34f47a99ed8823f495">&#9670;&nbsp;</a></span>Cypress_QSPI_Read_IT()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -806,7 +806,7 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>dest</em>, </td>
         </tr>
         <tr>
@@ -1315,6 +1315,33 @@ The latency codes must be set appropriately, <a class="el" href="group___q_s_p_i
 
 </div>
 </div>
+<a id="a202fc7febd02df3f0cf61d5a14a4e965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a202fc7febd02df3f0cf61d5a14a4e965">&#9670;&nbsp;</a></span>Cypress_QSPI_WriteDisable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HAL_StatusTypeDef Cypress_QSPI_WriteDisable </td>
+          <td>(</td>
+          <td class="paramtype">QSPI_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hqspi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disable write operations, terminating any current operation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hqspi</td><td>QSPI handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>HAL status </dd></dl>
+
+</div>
+</div>
 <a id="adc16476fb359b59689a064e13a0bad3e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc16476fb359b59689a064e13a0bad3e">&#9670;&nbsp;</a></span>Cypress_QSPI_WriteEnable()</h2>
 
@@ -1386,7 +1413,7 @@ The latency codes must be set appropriately, <a class="el" href="group___q_s_p_i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="cypress_q_s_p_i_8c.html">cypressQSPI.c</a></li>
-    <li class="footer">Generated on Mon Jul 19 2021 19:44:33 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jul 19 2021 19:58:49 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
