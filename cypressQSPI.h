@@ -218,7 +218,7 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
 
 
 /**
- * @name		Dummy cycle configuration
+ * @defgroup	QSPI_DUMMY QSPI Dummy clock configuration
  * @brief	Dummy cycles for SDR, High Performance
  * @pre		Define QSPI_DUMMY_{50 | 80 | 90 |104} based on the QSPI peripheral clock speed
  * @retval	DUMMY_CLOCK_CYCLES_READ: dummy clock cycles for READ reads

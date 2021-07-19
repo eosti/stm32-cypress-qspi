@@ -469,7 +469,7 @@ HAL_StatusTypeDef Cypress_QSPI_WriteCR(QSPI_HandleTypeDef *hqspi, uint8_t cReg)
 /**
  * @brief	Sets all bits in a sector to 1 (blocking)
  * @param	hqspi: QSPI handle
- * @param	address: the address of the sector to erase
+ * @param	address: address within the sector to erase
  * @return	HAL status
  * @post	If error, call Cypress_QSPI_ErrorRecovery to clear errors
  */
@@ -516,7 +516,7 @@ HAL_StatusTypeDef Cypress_QSPI_SectorErase(QSPI_HandleTypeDef *hqspi, uint32_t a
 /**
  * @brief	Sets all bits in a sector to 1 (non-blocking, requires interrupts)
  * @param	hqspi: QSPI handle
- * @param	address: the address of the sector to erase
+ * @param	address: address within the sector to erase
  * @return	HAL status
  * @post	User should verify that no errors occurred after erase
  * @remark 	Calls HAL_QSPI_StatusMatchCallback when complete via interrupt
@@ -556,7 +556,7 @@ HAL_StatusTypeDef Cypress_QSPI_SectorErase_IT(QSPI_HandleTypeDef *hqspi, uint32_
 }
 
 /**
- * @brief	Sets all bits in the flash memory to 1 (blocking)
+ * @brief	Sets *all* bits in the flash memory to 1 (blocking)
  * @param	hqspi: QSPI handle
  * @return	HAL status
  * @post	If error, call Cypress_QSPI_ErrorRecovery to clear errors
@@ -601,9 +601,8 @@ HAL_StatusTypeDef Cypress_QSPI_BulkErase(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
- * @brief	Sets all bits in the flash memory to 1 (non-blocking, requires interrupts)
+ * @brief	Sets *all* bits in the flash memory to 1 (non-blocking, requires interrupts)
  * @param	hqspi: QSPI handle
- * @param	address: the address of the sector to erase
  * @return	HAL status
  * @post	User should verify that no errors occurred after erase
  * @remark 	Calls HAL_QSPI_StatusMatchCallback when complete via interrupt
@@ -763,7 +762,7 @@ HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t addr
 /**
  * @brief	Reads data into memory using QSPI (blocking)
  * @pre 	CR1 must have CR1_QUAD set (0x02) to enable quad mode
- * @pre		The latency codes must be set appropriately, \ref Dummy cycle configuration
+ * @pre		The latency codes must be set appropriately, \ref QSPI_DUMMY
  * @param	hqspi: QSPI handle
  * @param	address: starting address to read
  * @param	dest: pointer to memory destination
