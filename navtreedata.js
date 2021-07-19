@@ -29,13 +29,21 @@ var NAVTREE =
     [ "Usage", "index.html#autotoc_md2", null ],
     [ "Compatibility", "index.html#autotoc_md3", null ],
     [ "Example", "index.html#autotoc_md4", null ],
-    [ "Issues", "index.html#autotoc_md5", null ]
+    [ "Issues", "index.html#autotoc_md5", null ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "Globals", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"cypress_q_s_p_i_8c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
