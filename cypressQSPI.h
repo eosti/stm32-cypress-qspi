@@ -1,3 +1,9 @@
+/**
+* @file cypressQSPI.h
+* @brief driver library for communicating with FL- series QSPI flash memory
+*/
+
+
 /*
  * cypressQSPI.h
  *
@@ -33,18 +39,18 @@ HAL_StatusTypeDef Cypress_QSPI_SectorErase_IT(QSPI_HandleTypeDef *hqspi, uint32_
 HAL_StatusTypeDef Cypress_QSPI_BulkErase(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef Cypress_QSPI_BulkErase_IT(QSPI_HandleTypeDef *hqspi);
 
-HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ReadQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ReadQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ReadQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Program(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Program_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Program_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ProgramQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ReadQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ReadQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ReadQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Program(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Program_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Program_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ProgramQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
 
 HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
@@ -209,36 +215,60 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
 /* PPB Lock Register */
 #define PPBLOCK                               ((uint8_t)0x01)      /*!< PPB array may be programmed or erased */
 
-/* Dummy cycles for SDR, High Performance */
-// Determined by the QSPI clock speed
-// DUMMY_CLOCK_CYCLES_READ is for any single-address-line operation
-// DUMMY_CLOCK_CYCLES_READ_QUADIO is for quad-address-line operation
-// DUMMY_LC is the associated LC bits to be set in CR1
+
+/**
+ * @name		Dummy cycle configuration
+ * @brief	Dummy cycles for SDR, High Performance
+ * @pre		Define QSPI_DUMMY_{50 | 80 | 90 |104} based on the QSPI peripheral clock speed
+ * @retval	DUMMY_CLOCK_CYCLES_READ: dummy clock cycles for READ reads
+ * @retval	DUMMY_CLOCK_CYCLES_FASTREAD: dummy clock cycles for FASTREAD reads
+ * @retval	DUMMY_CLOCK_CYCLES_READ_DUAL: dummy clock cycles for DUAL reads
+ * @retval	DUMMY_CLOCK_CYCLES_READ_DUALIO: dummy clock cycles for DUALIO reads
+ * @retval	DUMMY_CLOCK_CYCLES_READ_QUAD: dummy clock cycles for QUAD reads
+ * @retval	DUMMY_CLOCK_CYCLES_READ_QUADIO: dummy clock cycles for QUADIO reads
+ * @retval	DUMMY_LC: Latency code for given speed
+ * @post	User must set DUMMY_LC in CR1 for any read operations
+ */
+
 #if defined(QSPI_DUMMY_50)
 // Freq <= 50MHz
-#define DUMMY_CLOCK_CYCLES_READ             0
+#define DUMMY_CLOCK_CYCLES_READ				0
+#define DUMMY_CLOCK_CYCLES_FASTREAD         0
+#define DUMMY_CLOCK_CYCLES_READ_DUAL		0
+#define DUMMY_CLOCK_CYCLES_READ_DUALIO		4
+#define DUMMY_CLOCK_CYCLES_READ_QUAD		0
 #define DUMMY_CLOCK_CYCLES_READ_QUADIO      1
 #define DUMMY_LC							(CR1_LC3)
 
-#elif defined(QSPI_DUMMY_80)
-// Freq <= 80MHz, default chip configuration
-#define DUMMY_CLOCK_CYCLES_READ             8
-#define DUMMY_CLOCK_CYCLES_READ_QUADIO      4
-#define DUMMY_LC							(CR1_LC0)
-
 #elif defined(QSPI_DUMMY_90)
 // Freq <= 90MHz
-#define DUMMY_CLOCK_CYCLES_READ             8
+#define DUMMY_CLOCK_CYCLES_READ				NULL
+#define DUMMY_CLOCK_CYCLES_FASTREAD         8
+#define DUMMY_CLOCK_CYCLES_READ_DUAL		8
+#define DUMMY_CLOCK_CYCLES_READ_DUALIO		8
+#define DUMMY_CLOCK_CYCLES_READ_QUAD		5
 #define DUMMY_CLOCK_CYCLES_READ_QUADIO      4
 #define DUMMY_LC							(CR1_LC1)
 
-#else
-// This is the most latency the chip supports, so we use it as default
-// You can only go faster if the clock rate is slower, so this setting will always work
+#elif defined(QSPI_DUMMY_104)
 // Freq <= 104MHz
-#define DUMMY_CLOCK_CYCLES_READ             8
+#define DUMMY_CLOCK_CYCLES_READ				NULL
+#define DUMMY_CLOCK_CYCLES_FASTREAD         8
+#define DUMMY_CLOCK_CYCLES_READ_DUAL		8
+#define DUMMY_CLOCK_CYCLES_READ_DUALIO		8
+#define DUMMY_CLOCK_CYCLES_READ_QUAD		6
 #define DUMMY_CLOCK_CYCLES_READ_QUADIO      5
 #define DUMMY_LC							(CR1_LC2)
+
+#else
+// Freq <= 80MHz, default chip configuration
+#define DUMMY_CLOCK_CYCLES_READ				NULL
+#define DUMMY_CLOCK_CYCLES_FASTREAD         8
+#define DUMMY_CLOCK_CYCLES_READ_DUAL		8
+#define DUMMY_CLOCK_CYCLES_READ_DUALIO		8
+#define DUMMY_CLOCK_CYCLES_READ_QUAD		4
+#define DUMMY_CLOCK_CYCLES_READ_QUADIO      4
+#define DUMMY_LC							(CR1_LC0)
 
 #endif // End QSPI_DUMMY
 
