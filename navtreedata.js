@@ -26,14 +26,10 @@ var NAVTREE =
 [
   [ "STM32 Cypress QSPI", "index.html", [
     [ "Overview", "index.html#autotoc_md1", null ],
-    [ "Functions", "index.html#autotoc_md2", [
-      [ "Cypress_QSPI_Read, Cypress_QSPI_ReadQuad", "index.html#autotoc_md3", null ],
-      [ "Cypress_QSPI_Program, Cypress_QSPI_ProgramQuad", "index.html#autotoc_md4", null ],
-      [ "Cypress_QSPI_SectorErase, Cypress_QSPI_BulkErase", "index.html#autotoc_md5", null ],
-      [ "Configuration functions", "index.html#autotoc_md6", null ]
-    ] ],
-    [ "Example", "index.html#autotoc_md7", null ],
-    [ "Issues", "index.html#autotoc_md8", null ]
+    [ "Usage", "index.html#autotoc_md2", null ],
+    [ "Compatibility", "index.html#autotoc_md3", null ],
+    [ "Example", "index.html#autotoc_md4", null ],
+    [ "Issues", "index.html#autotoc_md5", null ]
   ] ]
 ];
 
