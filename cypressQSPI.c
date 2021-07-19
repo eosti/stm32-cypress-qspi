@@ -1,6 +1,7 @@
 /**
 * @file cypressQSPI.c
 * @brief driver library for communicating with FL- series QSPI flash memory
+* @author Reid Sox-Harris
 */
 
 /*
@@ -352,7 +353,7 @@ HAL_StatusTypeDef Cypress_QSPI_ClearSR(QSPI_HandleTypeDef *hqspi)
  * @param	hqspi: QSPI handle
  * @return	HAL status
  * @remark 	Returns HAL_OK if no errors, HAL_ERROR if errors
- * @post	If error, call Cypress_QSPI_ErrorRecovery
+ * @post	If error, call \ref Cypress_QSPI_ErrorRecovery
  */
 
 HAL_StatusTypeDef Cypress_QSPI_CheckForErrors(QSPI_HandleTypeDef *hqspi)
