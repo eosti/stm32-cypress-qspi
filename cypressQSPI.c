@@ -2,6 +2,8 @@
 * @file cypressQSPI.c
 * @brief driver library for communicating with FL- series QSPI flash memory
 * @author Reid Sox-Harris
+* @defgroup functions Public Functions
+* @{
 */
 
 /*
@@ -1217,3 +1219,5 @@ HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi)
 
 	return HAL_OK;
 }
+
+/** @} */
