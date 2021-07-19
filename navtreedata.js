@@ -30,6 +30,7 @@ var NAVTREE =
     [ "Compatibility", "index.html#autotoc_md3", null ],
     [ "Example", "index.html#autotoc_md4", null ],
     [ "Issues", "index.html#autotoc_md5", null ],
+    [ "Modules", "modules.html", "modules" ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [

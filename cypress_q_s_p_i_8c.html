@@ -138,10 +138,10 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
 <tr class="memdesc:a19ce501ca591e921123d3b0b2702fb0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all bits in a sector to 1 (non-blocking, requires interrupts)  <a href="cypress_q_s_p_i_8c.html#a19ce501ca591e921123d3b0b2702fb0f">More...</a><br /></td></tr>
 <tr class="separator:a19ce501ca591e921123d3b0b2702fb0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e6b0d0981f05f643af4a308f8124d5f"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#a9e6b0d0981f05f643af4a308f8124d5f">Cypress_QSPI_BulkErase</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
-<tr class="memdesc:a9e6b0d0981f05f643af4a308f8124d5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all bits in the flash memory to 1 (blocking)  <a href="cypress_q_s_p_i_8c.html#a9e6b0d0981f05f643af4a308f8124d5f">More...</a><br /></td></tr>
+<tr class="memdesc:a9e6b0d0981f05f643af4a308f8124d5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets <em>all</em> bits in the flash memory to 1 (blocking)  <a href="cypress_q_s_p_i_8c.html#a9e6b0d0981f05f643af4a308f8124d5f">More...</a><br /></td></tr>
 <tr class="separator:a9e6b0d0981f05f643af4a308f8124d5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa89a3ee770349c7e88797c463f829c57"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#aa89a3ee770349c7e88797c463f829c57">Cypress_QSPI_BulkErase_IT</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
-<tr class="memdesc:aa89a3ee770349c7e88797c463f829c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all bits in the flash memory to 1 (non-blocking, requires interrupts)  <a href="cypress_q_s_p_i_8c.html#aa89a3ee770349c7e88797c463f829c57">More...</a><br /></td></tr>
+<tr class="memdesc:aa89a3ee770349c7e88797c463f829c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets <em>all</em> bits in the flash memory to 1 (non-blocking, requires interrupts)  <a href="cypress_q_s_p_i_8c.html#aa89a3ee770349c7e88797c463f829c57">More...</a><br /></td></tr>
 <tr class="separator:aa89a3ee770349c7e88797c463f829c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4437cef97b510c38bf1c1a5275859b46"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8c.html#a4437cef97b510c38bf1c1a5275859b46">Cypress_QSPI_Read</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count)</td></tr>
 <tr class="memdesc:a4437cef97b510c38bf1c1a5275859b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data into memory in SPI mode (blocking)  <a href="cypress_q_s_p_i_8c.html#a4437cef97b510c38bf1c1a5275859b46">More...</a><br /></td></tr>
@@ -206,7 +206,7 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
       </table>
 </div><div class="memdoc">
 
-<p>Sets all bits in the flash memory to 1 (blocking) </p>
+<p>Sets <em>all</em> bits in the flash memory to 1 (blocking) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hqspi</td><td>QSPI handle </td></tr>
@@ -234,11 +234,10 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
       </table>
 </div><div class="memdoc">
 
-<p>Sets all bits in the flash memory to 1 (non-blocking, requires interrupts) </p>
+<p>Sets <em>all</em> bits in the flash memory to 1 (non-blocking, requires interrupts) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hqspi</td><td>QSPI handle </td></tr>
-    <tr><td class="paramname">address</td><td>the address of the sector to erase </td></tr>
   </table>
   </dd>
 </dl>
@@ -918,7 +917,7 @@ HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>Cypress_
 <p>Reads data into memory using QSPI (blocking) </p>
 <dl class="section pre"><dt>Precondition</dt><dd>CR1 must have CR1_QUAD set (0x02) to enable quad mode </dd>
 <dd>
-The latency codes must be set appropriately, Dummy cycle configuration </dd></dl>
+The latency codes must be set appropriately, <a class="el" href="group___q_s_p_i___d_u_m_m_y.html">QSPI Dummy clock configuration</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hqspi</td><td>QSPI handle </td></tr>
@@ -1174,7 +1173,7 @@ The latency codes must be set appropriately, Dummy cycle configuration </dd></dl
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hqspi</td><td>QSPI handle </td></tr>
-    <tr><td class="paramname">address</td><td>the address of the sector to erase </td></tr>
+    <tr><td class="paramname">address</td><td>address within the sector to erase </td></tr>
   </table>
   </dd>
 </dl>
@@ -1213,7 +1212,7 @@ The latency codes must be set appropriately, Dummy cycle configuration </dd></dl
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hqspi</td><td>QSPI handle </td></tr>
-    <tr><td class="paramname">address</td><td>the address of the sector to erase </td></tr>
+    <tr><td class="paramname">address</td><td>address within the sector to erase </td></tr>
   </table>
   </dd>
 </dl>
@@ -1387,7 +1386,7 @@ The latency codes must be set appropriately, Dummy cycle configuration </dd></dl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="cypress_q_s_p_i_8c.html">cypressQSPI.c</a></li>
-    <li class="footer">Generated on Mon Jul 19 2021 19:35:19 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jul 19 2021 19:44:33 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
