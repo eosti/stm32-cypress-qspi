@@ -221,6 +221,7 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
  * @defgroup	QSPI_DUMMY QSPI Dummy clock configuration
  * @brief	Dummy cycles for SDR, High Performance
  * @pre		Define QSPI_DUMMY_{50 | 80 | 90 | 104} based on the QSPI peripheral clock speed
+ * @pre 	ex. for a peripheral speed of < 50 MHz, use `#define QSPI_DUMMY_50`
  * @retval	DUMMY_CLOCK_CYCLES_READ: dummy clock cycles for READ reads
  * @retval	DUMMY_CLOCK_CYCLES_FASTREAD: dummy clock cycles for FASTREAD reads
  * @retval	DUMMY_CLOCK_CYCLES_READ_DUAL: dummy clock cycles for DUAL reads
@@ -229,7 +230,6 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
  * @retval	DUMMY_CLOCK_CYCLES_READ_QUADIO: dummy clock cycles for QUADIO reads
  * @retval	DUMMY_LC: Latency code for given speed
  * @post	User must set DUMMY_LC in CR1 for any read operations
- * @example example.h {46,47}
  */
 
 #if defined(QSPI_DUMMY_50)
