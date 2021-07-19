@@ -90,7 +90,9 @@ $(document).ready(function(){initNavTree('group___q_s_p_i___d_u_m_m_y.html','');
 <p>Dummy cycles for SDR, High Performance.  
 </p>
 <p>Dummy cycles for SDR, High Performance. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>Define QSPI_DUMMY_{50 | 80 | 90 | 104} based on the QSPI peripheral clock speed </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Define QSPI_DUMMY_{50 | 80 | 90 | 104} based on the QSPI peripheral clock speed </dd>
+<dd>
+ex. for a peripheral speed of &lt; 50 MHz, use <code>#define QSPI_DUMMY_50</code> </dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">DUMMY_CLOCK_CYCLES_READ</td><td>dummy clock cycles for READ reads </td></tr>
@@ -109,7 +111,7 @@ $(document).ready(function(){initNavTree('group___q_s_p_i___d_u_m_m_y.html','');
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jul 19 2021 19:58:49 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jul 19 2021 20:01:46 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
