@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qspi_20dummy_20clock_20configuration_58',['QSPI Dummy clock configuration',['../group___q_s_p_i___d_u_m_m_y.html',1,'']]]
+  ['ppblock_58',['PPBLOCK',['../cypress_q_s_p_i_8h.html#a8874954231ec55f33f1ef402181ec7e2',1,'cypressQSPI.h']]]
 ];
