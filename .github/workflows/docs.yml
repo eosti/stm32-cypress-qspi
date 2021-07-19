@@ -29,7 +29,7 @@ jobs:
       - uses: mattnotmitt/doxygen-action@v1
         with:
           working-directory: 'doxygen/'
-          doxyfile-path: './Doxygen'
+          doxyfile-path: './Doxyfile'
           
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
