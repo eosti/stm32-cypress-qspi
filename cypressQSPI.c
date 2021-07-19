@@ -763,6 +763,7 @@ HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t addr
 /**
  * @brief	Reads data into memory using QSPI (blocking)
  * @pre 	CR1 must have CR1_QUAD set (0x02) to enable quad mode
+ * @pre		The latency codes must be set appropriately, \ref Dummy cycle configuration
  * @param	hqspi: QSPI handle
  * @param	address: starting address to read
  * @param	dest: pointer to memory destination
