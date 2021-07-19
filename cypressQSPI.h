@@ -40,18 +40,18 @@ HAL_StatusTypeDef Cypress_QSPI_SectorErase_IT(QSPI_HandleTypeDef *hqspi, uint32_
 HAL_StatusTypeDef Cypress_QSPI_BulkErase(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef Cypress_QSPI_BulkErase_IT(QSPI_HandleTypeDef *hqspi);
 
-HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ReadQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ReadQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ReadQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Program(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Program_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_Program_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ProgramQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
-HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ReadQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ReadQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ReadQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Program(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Program_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_Program_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ProgramQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
 
 HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
@@ -220,7 +220,7 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
 /**
  * @defgroup	QSPI_DUMMY QSPI Dummy clock configuration
  * @brief	Dummy cycles for SDR, High Performance
- * @pre		Define QSPI_DUMMY_{50 | 80 | 90 |104} based on the QSPI peripheral clock speed
+ * @pre		Define QSPI_DUMMY_{50 | 80 | 90 | 104} based on the QSPI peripheral clock speed
  * @retval	DUMMY_CLOCK_CYCLES_READ: dummy clock cycles for READ reads
  * @retval	DUMMY_CLOCK_CYCLES_FASTREAD: dummy clock cycles for FASTREAD reads
  * @retval	DUMMY_CLOCK_CYCLES_READ_DUAL: dummy clock cycles for DUAL reads
@@ -229,6 +229,7 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
  * @retval	DUMMY_CLOCK_CYCLES_READ_QUADIO: dummy clock cycles for QUADIO reads
  * @retval	DUMMY_LC: Latency code for given speed
  * @post	User must set DUMMY_LC in CR1 for any read operations
+ * @example example.h {46,47}
  */
 
 #if defined(QSPI_DUMMY_50)

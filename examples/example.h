@@ -1,7 +1,7 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.h
+  * @file           : example.h
   * @brief          : Header for main.c file.
   *                   This file contains the common defines of the application.
   ******************************************************************************
@@ -43,9 +43,8 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 
-/* Default dummy clocks cycles */
-#define DUMMY_CLOCK_CYCLES_READ              0
-#define DUMMY_CLOCK_CYCLES_READ_QUAD         1
+// QSPI clock is running < 50MHz
+#define QSPI_DUMMY_50
 
 
 /* Size of buffers */

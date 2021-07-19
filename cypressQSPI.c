@@ -66,7 +66,7 @@ HAL_StatusTypeDef Cypress_QSPI_WriteEnable(QSPI_HandleTypeDef *hqspi)
 	return HAL_OK;
 }
 
-/*
+/**
  * @brief 	Disable write operations, terminating any current operation
  * @param 	hqspi: QSPI handle
  * @return 	HAL status
@@ -650,7 +650,7 @@ HAL_StatusTypeDef Cypress_QSPI_BulkErase_IT(QSPI_HandleTypeDef *hqspi)
  * @return	HAL status
  */
 
-HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count)
+HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
 {
 	QSPI_CommandTypeDef sCommand;
 
@@ -689,7 +689,7 @@ HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address,
  * @remark	Calls HAL_QSPI_RxCpltCallback on completion via interrupt
  */
 
-HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count)
+HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
 {
 	QSPI_CommandTypeDef sCommand;
 
@@ -729,7 +729,7 @@ HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t addre
  * @remark	Calls HAL_QSPI_RxCpltCallback on completion via interrupt
  */
 
-HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint32_t *dest, uint32_t count)
+HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
 {
 	QSPI_CommandTypeDef sCommand;
 
