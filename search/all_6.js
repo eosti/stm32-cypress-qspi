@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_57',['main',['../example_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'example.c']]]
+  ['ppblock_57',['PPBLOCK',['../cypress_q_s_p_i_8h.html#a8874954231ec55f33f1ef402181ec7e2',1,'cypressQSPI.h']]],
+  ['public_20functions_58',['Public Functions',['../group__functions.html',1,'']]]
 ];

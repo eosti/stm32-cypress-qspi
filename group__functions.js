@@ -1,4 +1,4 @@
-var cypress_q_s_p_i_8c =
+var group__functions =
 [
     [ "Cypress_QSPI_BulkErase", "group__functions.html#ga9e6b0d0981f05f643af4a308f8124d5f", null ],
     [ "Cypress_QSPI_BulkErase_IT", "group__functions.html#gaa89a3ee770349c7e88797c463f829c57", null ],
