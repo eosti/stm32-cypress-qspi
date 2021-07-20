@@ -46,6 +46,12 @@ extern "C" {
 // QSPI clock is running < 50MHz
 #define QSPI_DUMMY_50
 
+// S25FL512S Info
+#define QSPI_FLASH_SIZE                      29		// Bits to represent address
+#define QSPI_PAGE_SIZE                       256
+
+#define BULK_ERASE_MAX_TIME                   460000
+#define SECTOR_ERASE_MAX_TIME                 2600
 
 /* Size of buffers */
 #define BUFFERSIZE                 (COUNTOF(aTxBuffer) - 1)

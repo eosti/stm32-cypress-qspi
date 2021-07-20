@@ -1,6 +1,6 @@
 /**
 * @file cypressQSPI.h
-* @brief driver library for communicating with FL- series QSPI flash memory
+* @brief driver library for communicating with FL-S series QSPI flash memory
 * @author Reid Sox-Harris
 */
 
@@ -48,18 +48,7 @@ HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32
 HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
 
-/* S25FL512S Info */
-
-#define QSPI_FLASH_SIZE                      29		// Bits to represent address
-#define QSPI_PAGE_SIZE                       256
-//#define FLASH_SIZE                            0x4000000 /* 512 MBits => 64MBytes */
-//#define SECTOR_SIZE                           0x40000   /* 256 sectors of 256KBytes */
-//#define PAGE_SIZE                             0x200     /* 131072 pages of 512 bytes */
-
-#define BULK_ERASE_MAX_TIME                   460000
-#define SECTOR_ERASE_MAX_TIME                 2600
-
-/* S25FL512S Commands */
+/* FL-S series Commands */
 /* Reset Operations */
 #define SOFTWARE_RESET_CMD                    0xF0
 #define MODE_BIT_RESET_CMD                    0xFF
@@ -156,7 +145,7 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
 #define PROGRAM_PASSWORD_CMD                  0xE8
 #define UNLOCK_PASSWORD_CMD                   0xE9
 
-/* S25FL512S Registers */
+/* FL-S Registers */
 /* Status Register-1 */
 #define SR1_WIP                               ((uint8_t)0x01)      /*!< Write in progress, device busy */
 #define SR1_WREN                              ((uint8_t)0x02)      /*!< Write Registers, program or commands are accepted */

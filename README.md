@@ -1,5 +1,5 @@
 # STM32 Cypress QSPI
-A library for communicating with Cypress FL- series QSPI flash memory chips
+A library for communicating with Cypress FL-S series QSPI flash memory chips
 
 ## Overview
 This library offers a number of helper functions to simplify communications by black-boxing the QSPI HAL function.
@@ -34,8 +34,10 @@ After generating the code, there will be a `QSPI_HandleTypeDef hqspi;`, which is
 The target controller must have a hardware QSPI peripheral. 
 This code was tested using an STM32H7 MCU, but many other families have the QSPI peripheral.
 
-The flash memory must be from the Cypress FL- series, and must have QSPI capabilities.
+The flash memory must be from the Cypress FL-S series, and must have QSPI capabilities.
 This code was tested using the S25FL512S chip, but many other models are compatible. 
+
+Many commands are backwards compatible, meaning that other FL- series chips *may* be able to use this library, but that is untested. 
 
 ## Example
 A example using this library is included for reference, based on the HAL QSPI examples built into STM32CubeIDE.
