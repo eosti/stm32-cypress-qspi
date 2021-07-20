@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>STM32 Cypress QSPI: cypressQSPI.h File Reference</title>
+<title>STM32 Cypress QSPI: Cypress_FLS_QSPI_Driver.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('cypress_q_s_p_i_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('_cypress___f_l_s___q_s_p_i___driver_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -86,30 +86,18 @@ $(document).ready(function(){initNavTree('cypress_q_s_p_i_8h.html',''); initResi
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">cypressQSPI.h File Reference</div>  </div>
+<div class="title">Cypress_FLS_QSPI_Driver.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>driver library for communicating with FL- series QSPI flash memory  
+<p>driver library for communicating with FL-S series QSPI flash memory  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;stm32h7xx_hal.h&quot;</code><br />
 </div>
-<p><a href="cypress_q_s_p_i_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_cypress___f_l_s___q_s_p_i___driver_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:aaf91d03055ecda6cfea6084e89b16f32"><td class="memItemLeft" align="right" valign="top"><a id="aaf91d03055ecda6cfea6084e89b16f32"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>QSPI_FLASH_SIZE</b>&#160;&#160;&#160;29</td></tr>
-<tr class="separator:aaf91d03055ecda6cfea6084e89b16f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4103d018e4ba51e21debefefb6ae89ee"><td class="memItemLeft" align="right" valign="top"><a id="a4103d018e4ba51e21debefefb6ae89ee"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>QSPI_PAGE_SIZE</b>&#160;&#160;&#160;256</td></tr>
-<tr class="separator:a4103d018e4ba51e21debefefb6ae89ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a692bc6391f1239a9c9b47105941b9248"><td class="memItemLeft" align="right" valign="top"><a id="a692bc6391f1239a9c9b47105941b9248"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BULK_ERASE_MAX_TIME</b>&#160;&#160;&#160;460000</td></tr>
-<tr class="separator:a692bc6391f1239a9c9b47105941b9248"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8852109bac670b9f78b88212b67aad2"><td class="memItemLeft" align="right" valign="top"><a id="af8852109bac670b9f78b88212b67aad2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SECTOR_ERASE_MAX_TIME</b>&#160;&#160;&#160;2600</td></tr>
-<tr class="separator:af8852109bac670b9f78b88212b67aad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5355d2002f6a038d745f3dfe6903a9bb"><td class="memItemLeft" align="right" valign="top"><a id="a5355d2002f6a038d745f3dfe6903a9bb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SOFTWARE_RESET_CMD</b>&#160;&#160;&#160;0xF0</td></tr>
 <tr class="separator:a5355d2002f6a038d745f3dfe6903a9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -308,61 +296,61 @@ Macros</h2></td></tr>
 <tr class="memitem:af61b5336b33340752d27074f7a9a1518"><td class="memItemLeft" align="right" valign="top"><a id="af61b5336b33340752d27074f7a9a1518"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>UNLOCK_PASSWORD_CMD</b>&#160;&#160;&#160;0xE9</td></tr>
 <tr class="separator:af61b5336b33340752d27074f7a9a1518"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c4fb93bbb57676fd2a1ad9069290960"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a1c4fb93bbb57676fd2a1ad9069290960">SR1_WIP</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
+<tr class="memitem:a1c4fb93bbb57676fd2a1ad9069290960"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a1c4fb93bbb57676fd2a1ad9069290960">SR1_WIP</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
 <tr class="separator:a1c4fb93bbb57676fd2a1ad9069290960"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeff22dfbadf458b0a0722e46dba40f07"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#aeff22dfbadf458b0a0722e46dba40f07">SR1_WREN</a>&#160;&#160;&#160;((uint8_t)0x02)</td></tr>
+<tr class="memitem:aeff22dfbadf458b0a0722e46dba40f07"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#aeff22dfbadf458b0a0722e46dba40f07">SR1_WREN</a>&#160;&#160;&#160;((uint8_t)0x02)</td></tr>
 <tr class="separator:aeff22dfbadf458b0a0722e46dba40f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e4c3ab26e71994f09a321567a7abb4a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a7e4c3ab26e71994f09a321567a7abb4a">SR1_BP0</a>&#160;&#160;&#160;((uint8_t)0x04)</td></tr>
+<tr class="memitem:a7e4c3ab26e71994f09a321567a7abb4a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a7e4c3ab26e71994f09a321567a7abb4a">SR1_BP0</a>&#160;&#160;&#160;((uint8_t)0x04)</td></tr>
 <tr class="separator:a7e4c3ab26e71994f09a321567a7abb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf6cb08c284783ab06c64031cd42263d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#acf6cb08c284783ab06c64031cd42263d">SR1_BP1</a>&#160;&#160;&#160;((uint8_t)0x08)</td></tr>
+<tr class="memitem:acf6cb08c284783ab06c64031cd42263d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#acf6cb08c284783ab06c64031cd42263d">SR1_BP1</a>&#160;&#160;&#160;((uint8_t)0x08)</td></tr>
 <tr class="separator:acf6cb08c284783ab06c64031cd42263d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79fa6a4b3f41be9ffa97a88ee02ed753"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a79fa6a4b3f41be9ffa97a88ee02ed753">SR1_BP2</a>&#160;&#160;&#160;((uint8_t)0x10)</td></tr>
+<tr class="memitem:a79fa6a4b3f41be9ffa97a88ee02ed753"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a79fa6a4b3f41be9ffa97a88ee02ed753">SR1_BP2</a>&#160;&#160;&#160;((uint8_t)0x10)</td></tr>
 <tr class="separator:a79fa6a4b3f41be9ffa97a88ee02ed753"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7d035a5aec8a4b53e1640a71749c63e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#ac7d035a5aec8a4b53e1640a71749c63e">SR1_ERERR</a>&#160;&#160;&#160;((uint8_t)0x20)</td></tr>
+<tr class="memitem:ac7d035a5aec8a4b53e1640a71749c63e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#ac7d035a5aec8a4b53e1640a71749c63e">SR1_ERERR</a>&#160;&#160;&#160;((uint8_t)0x20)</td></tr>
 <tr class="separator:ac7d035a5aec8a4b53e1640a71749c63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a093723cae1ec0f4b00080a8d417552e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a093723cae1ec0f4b00080a8d417552e3">SR1_PGERR</a>&#160;&#160;&#160;((uint8_t)0x40)</td></tr>
+<tr class="memitem:a093723cae1ec0f4b00080a8d417552e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a093723cae1ec0f4b00080a8d417552e3">SR1_PGERR</a>&#160;&#160;&#160;((uint8_t)0x40)</td></tr>
 <tr class="separator:a093723cae1ec0f4b00080a8d417552e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7a88cacde1076884afac9f1f3b01e12"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#ac7a88cacde1076884afac9f1f3b01e12">SR1_SRWD</a>&#160;&#160;&#160;((uint8_t)0x80)</td></tr>
+<tr class="memitem:ac7a88cacde1076884afac9f1f3b01e12"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#ac7a88cacde1076884afac9f1f3b01e12">SR1_SRWD</a>&#160;&#160;&#160;((uint8_t)0x80)</td></tr>
 <tr class="separator:ac7a88cacde1076884afac9f1f3b01e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afec718ff94239eec70e0922fa4a7d221"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#afec718ff94239eec70e0922fa4a7d221">SR2_PS</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
+<tr class="memitem:afec718ff94239eec70e0922fa4a7d221"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#afec718ff94239eec70e0922fa4a7d221">SR2_PS</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
 <tr class="separator:afec718ff94239eec70e0922fa4a7d221"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af68e6af4c9b1b7de3a66bb989e896b3e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#af68e6af4c9b1b7de3a66bb989e896b3e">SR2_ES</a>&#160;&#160;&#160;((uint8_t)0x02)</td></tr>
+<tr class="memitem:af68e6af4c9b1b7de3a66bb989e896b3e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#af68e6af4c9b1b7de3a66bb989e896b3e">SR2_ES</a>&#160;&#160;&#160;((uint8_t)0x02)</td></tr>
 <tr class="separator:af68e6af4c9b1b7de3a66bb989e896b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d32a52ecca690d3e5e242fa210bbc01"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a4d32a52ecca690d3e5e242fa210bbc01">CR1_FREEZE</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
+<tr class="memitem:a4d32a52ecca690d3e5e242fa210bbc01"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a4d32a52ecca690d3e5e242fa210bbc01">CR1_FREEZE</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
 <tr class="separator:a4d32a52ecca690d3e5e242fa210bbc01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f8f2eea6f381a801a2f40baa9839b2e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a5f8f2eea6f381a801a2f40baa9839b2e">CR1_QUAD</a>&#160;&#160;&#160;((uint8_t)0x02)</td></tr>
+<tr class="memitem:a5f8f2eea6f381a801a2f40baa9839b2e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a5f8f2eea6f381a801a2f40baa9839b2e">CR1_QUAD</a>&#160;&#160;&#160;((uint8_t)0x02)</td></tr>
 <tr class="separator:a5f8f2eea6f381a801a2f40baa9839b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8df2d09ed5e064193ad69e055d6c811"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#aa8df2d09ed5e064193ad69e055d6c811">CR1_BPNV</a>&#160;&#160;&#160;((uint8_t)0x08)</td></tr>
+<tr class="memitem:aa8df2d09ed5e064193ad69e055d6c811"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#aa8df2d09ed5e064193ad69e055d6c811">CR1_BPNV</a>&#160;&#160;&#160;((uint8_t)0x08)</td></tr>
 <tr class="separator:aa8df2d09ed5e064193ad69e055d6c811"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a530a0d693c9868bd74dddfee4ccb5638"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a530a0d693c9868bd74dddfee4ccb5638">CR1_TBPROT</a>&#160;&#160;&#160;((uint8_t)0x20)</td></tr>
+<tr class="memitem:a530a0d693c9868bd74dddfee4ccb5638"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a530a0d693c9868bd74dddfee4ccb5638">CR1_TBPROT</a>&#160;&#160;&#160;((uint8_t)0x20)</td></tr>
 <tr class="separator:a530a0d693c9868bd74dddfee4ccb5638"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25ac50804da0de5285fef41150e08b3b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a25ac50804da0de5285fef41150e08b3b">CR1_LC_MASK</a>&#160;&#160;&#160;((uint8_t)0xC0)</td></tr>
+<tr class="memitem:a25ac50804da0de5285fef41150e08b3b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a25ac50804da0de5285fef41150e08b3b">CR1_LC_MASK</a>&#160;&#160;&#160;((uint8_t)0xC0)</td></tr>
 <tr class="separator:a25ac50804da0de5285fef41150e08b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6256bb33cc98669212cdd5e7e3432a54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a6256bb33cc98669212cdd5e7e3432a54">CR1_LC0</a>&#160;&#160;&#160;((uint8_t)0x00)</td></tr>
+<tr class="memitem:a6256bb33cc98669212cdd5e7e3432a54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a6256bb33cc98669212cdd5e7e3432a54">CR1_LC0</a>&#160;&#160;&#160;((uint8_t)0x00)</td></tr>
 <tr class="separator:a6256bb33cc98669212cdd5e7e3432a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a849a2f69986aaf80f34fddebb15da34c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a849a2f69986aaf80f34fddebb15da34c">CR1_LC1</a>&#160;&#160;&#160;((uint8_t)0x40)</td></tr>
+<tr class="memitem:a849a2f69986aaf80f34fddebb15da34c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a849a2f69986aaf80f34fddebb15da34c">CR1_LC1</a>&#160;&#160;&#160;((uint8_t)0x40)</td></tr>
 <tr class="separator:a849a2f69986aaf80f34fddebb15da34c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb9afdc796428ad2375538ae42f4ed57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#abb9afdc796428ad2375538ae42f4ed57">CR1_LC2</a>&#160;&#160;&#160;((uint8_t)0x80)</td></tr>
+<tr class="memitem:abb9afdc796428ad2375538ae42f4ed57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#abb9afdc796428ad2375538ae42f4ed57">CR1_LC2</a>&#160;&#160;&#160;((uint8_t)0x80)</td></tr>
 <tr class="separator:abb9afdc796428ad2375538ae42f4ed57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd43ce14f04f7c428e62faedf2a913d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#abd43ce14f04f7c428e62faedf2a913d0">CR1_LC3</a>&#160;&#160;&#160;((uint8_t)0xC0)</td></tr>
+<tr class="memitem:abd43ce14f04f7c428e62faedf2a913d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#abd43ce14f04f7c428e62faedf2a913d0">CR1_LC3</a>&#160;&#160;&#160;((uint8_t)0xC0)</td></tr>
 <tr class="separator:abd43ce14f04f7c428e62faedf2a913d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90e09acb44288cc8fd26f5156bfc9ef9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a90e09acb44288cc8fd26f5156bfc9ef9">AB_EN</a>&#160;&#160;&#160;((uint32_t)0x00000001)</td></tr>
+<tr class="memitem:a90e09acb44288cc8fd26f5156bfc9ef9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a90e09acb44288cc8fd26f5156bfc9ef9">AB_EN</a>&#160;&#160;&#160;((uint32_t)0x00000001)</td></tr>
 <tr class="separator:a90e09acb44288cc8fd26f5156bfc9ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05753b418e015852e1617f251067cd26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a05753b418e015852e1617f251067cd26">AB_SD_MASK</a>&#160;&#160;&#160;((uint32_t)0x000001FE)</td></tr>
+<tr class="memitem:a05753b418e015852e1617f251067cd26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a05753b418e015852e1617f251067cd26">AB_SD_MASK</a>&#160;&#160;&#160;((uint32_t)0x000001FE)</td></tr>
 <tr class="separator:a05753b418e015852e1617f251067cd26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad88915ecdf704ee428fc8294009c3b6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#ad88915ecdf704ee428fc8294009c3b6e">AB_SA_MASK</a>&#160;&#160;&#160;((uint32_t)0xFFFFFE00)</td></tr>
+<tr class="memitem:ad88915ecdf704ee428fc8294009c3b6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#ad88915ecdf704ee428fc8294009c3b6e">AB_SA_MASK</a>&#160;&#160;&#160;((uint32_t)0xFFFFFE00)</td></tr>
 <tr class="separator:ad88915ecdf704ee428fc8294009c3b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a262b48070a85d2de5119c44b73f99319"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a262b48070a85d2de5119c44b73f99319">BA_BA24</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
+<tr class="memitem:a262b48070a85d2de5119c44b73f99319"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a262b48070a85d2de5119c44b73f99319">BA_BA24</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
 <tr class="separator:a262b48070a85d2de5119c44b73f99319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38d0399c4bd02d455ac0c81d44d5ef27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a38d0399c4bd02d455ac0c81d44d5ef27">BA_BA25</a>&#160;&#160;&#160;((uint8_t)0x02)</td></tr>
+<tr class="memitem:a38d0399c4bd02d455ac0c81d44d5ef27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a38d0399c4bd02d455ac0c81d44d5ef27">BA_BA25</a>&#160;&#160;&#160;((uint8_t)0x02)</td></tr>
 <tr class="separator:a38d0399c4bd02d455ac0c81d44d5ef27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41f2ed919e3af30da67743ca5ed6c665"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a41f2ed919e3af30da67743ca5ed6c665">BA_EXTADD</a>&#160;&#160;&#160;((uint8_t)0x80)</td></tr>
+<tr class="memitem:a41f2ed919e3af30da67743ca5ed6c665"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a41f2ed919e3af30da67743ca5ed6c665">BA_EXTADD</a>&#160;&#160;&#160;((uint8_t)0x80)</td></tr>
 <tr class="separator:a41f2ed919e3af30da67743ca5ed6c665"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7bd2b18580e35d4b7c559f027ff7d2b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#aa7bd2b18580e35d4b7c559f027ff7d2b">ASP_PSTMLB</a>&#160;&#160;&#160;((uint16_t)0x0002)</td></tr>
+<tr class="memitem:aa7bd2b18580e35d4b7c559f027ff7d2b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#aa7bd2b18580e35d4b7c559f027ff7d2b">ASP_PSTMLB</a>&#160;&#160;&#160;((uint16_t)0x0002)</td></tr>
 <tr class="separator:aa7bd2b18580e35d4b7c559f027ff7d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89a3b08a3cec27bfcafe1dcfd452fd8b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a89a3b08a3cec27bfcafe1dcfd452fd8b">ASP_PWSMLB</a>&#160;&#160;&#160;((uint16_t)0x0003)</td></tr>
+<tr class="memitem:a89a3b08a3cec27bfcafe1dcfd452fd8b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a89a3b08a3cec27bfcafe1dcfd452fd8b">ASP_PWSMLB</a>&#160;&#160;&#160;((uint16_t)0x0003)</td></tr>
 <tr class="separator:a89a3b08a3cec27bfcafe1dcfd452fd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8874954231ec55f33f1ef402181ec7e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cypress_q_s_p_i_8h.html#a8874954231ec55f33f1ef402181ec7e2">PPBLOCK</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
+<tr class="memitem:a8874954231ec55f33f1ef402181ec7e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a8874954231ec55f33f1ef402181ec7e2">PPBLOCK</a>&#160;&#160;&#160;((uint8_t)0x01)</td></tr>
 <tr class="separator:a8874954231ec55f33f1ef402181ec7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab44138b4262b7fe734300348f942e511"><td class="memItemLeft" align="right" valign="top"><a id="ab44138b4262b7fe734300348f942e511"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DUMMY_CLOCK_CYCLES_READ</b>&#160;&#160;&#160;NULL</td></tr>
@@ -383,7 +371,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DUMMY_CLOCK_CYCLES_READ_QUADIO</b>&#160;&#160;&#160;4</td></tr>
 <tr class="separator:a4694aedd6ffec7e945646eb99f711609"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1e33fbfc7bb6f7fcb08dfdb17d6b807"><td class="memItemLeft" align="right" valign="top"><a id="af1e33fbfc7bb6f7fcb08dfdb17d6b807"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DUMMY_LC</b>&#160;&#160;&#160;(<a class="el" href="cypress_q_s_p_i_8h.html#a6256bb33cc98669212cdd5e7e3432a54">CR1_LC0</a>)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DUMMY_LC</b>&#160;&#160;&#160;(<a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html#a6256bb33cc98669212cdd5e7e3432a54">CR1_LC0</a>)</td></tr>
 <tr class="separator:af1e33fbfc7bb6f7fcb08dfdb17d6b807"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -480,7 +468,7 @@ Functions</h2></td></tr>
 <tr class="separator:gad0b4cc2f25809039f9984332f4439702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>driver library for communicating with FL- series QSPI flash memory </p>
+<div class="textblock"><p>driver library for communicating with FL-S series QSPI flash memory </p>
 <dl class="section author"><dt>Author</dt><dd>Reid Sox-Harris </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a90e09acb44288cc8fd26f5156bfc9ef9"></a>
@@ -909,8 +897,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="cypress_q_s_p_i_8h.html">cypressQSPI.h</a></li>
-    <li class="footer">Generated on Tue Jul 20 2021 02:23:19 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="navelem"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8h.html">Cypress_FLS_QSPI_Driver.h</a></li>
+    <li class="footer">Generated on Tue Jul 20 2021 04:29:39 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

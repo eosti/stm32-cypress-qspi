@@ -44,8 +44,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"cypress_q_s_p_i_8c.html",
-"index.html#autotoc_md5"
+"_cypress___f_l_s___q_s_p_i___driver_8c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

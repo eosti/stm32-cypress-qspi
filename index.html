@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">STM32 Cypress QSPI </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a>A library for communicating with Cypress FL- series QSPI flash memory chips</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a>A library for communicating with Cypress FL-S series QSPI flash memory chips</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Overview</h1>
 <p>This library offers a number of helper functions to simplify communications by black-boxing the QSPI HAL function. All functions return type <code>HAL_StatusTypeDef</code> which will typically be either <code>HAL_OK</code> when the function succeeded, or <code>HAL_ERROR</code> if any error was encountered.</p>
@@ -102,10 +102,11 @@ Usage</h1>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Compatibility</h1>
 <p>The target controller must have a hardware QSPI peripheral. This code was tested using an STM32H7 MCU, but many other families have the QSPI peripheral.</p>
-<p>The flash memory must be from the Cypress FL- series, and must have QSPI capabilities. This code was tested using the S25FL512S chip, but many other models are compatible.</p>
+<p>The flash memory must be from the Cypress FL-S series, and must have QSPI capabilities. This code was tested using the S25FL512S chip, but many other models are compatible.</p>
+<p>Many commands are backwards compatible, meaning that other FL- series chips <em>may</em> be able to use this library, but that is untested.</p>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Example</h1>
-<p>A example using this library is included for reference, based on the HAL QSPI examples built into STM32CubeIDE. A new project should be created, and then the example code can be copied into <code>main.c</code> and <code>main.h</code>, and the library files copied into the correct location.</p>
+<p>A example using this library is included for reference, based on the HAL QSPI examples built into STM32CubeIDE. A new project should be created, and then the example code can be copied into <code>main.c</code> and <code>main.h</code>, and the library files copied into the correct location. In order for them not to compile, the dot has been stripped from the file name; this is intentional.</p>
 <h1><a class="anchor" id="autotoc_md5"></a>
 Issues</h1>
 <p>Any issues, comments, complaints, suggestions? File an issue! Or, better yet, submit a PR! </p>
@@ -115,7 +116,7 @@ Issues</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jul 20 2021 02:23:19 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jul 20 2021 04:29:39 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
