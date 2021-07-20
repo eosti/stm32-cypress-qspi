@@ -4,14 +4,6 @@
 * @author Reid Sox-Harris
 */
 
-
-/*
- * cypressQSPI.h
- *
- *  Created on: Jun 21, 2021
- *      Author: reid
- */
-
 #ifndef INC_CYPRESSQSPI_H_
 #define INC_CYPRESSQSPI_H_
 
@@ -55,15 +47,6 @@ HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32
 
 HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
-
-// Possible additions:
-// MDMA mode
-// Adding whatever the continuous write mode is
-// Abort functions
-// Memory mapping
-// Getting ID_CFI info
-// Make every function have an IT alternative (maybe something with RegisterCallback so that the function can be super-duper interrupt driven, even for the WRENs?)
-
 
 /* S25FL512S Info */
 
