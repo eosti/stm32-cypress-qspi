@@ -1,6 +1,6 @@
 /**
-* @file cypressQSPI.c
-* @brief driver library for communicating with FL- series QSPI flash memory
+* @file Cypress_FLS_QSPI_Driver.c
+* @brief driver library for communicating with FL-S series QSPI flash memory
 * @author Reid Sox-Harris
 * @defgroup functions Public Functions
 * @{
@@ -19,7 +19,7 @@
  *      DMA -> Interrupt driven, but will access memory directly so only one interrupt (preferable for large writes)
  */
 
-#include "cypressQSPI.h"
+#include "Cypress_FLS_QSPI_Driver.h"
 
 /**
  * @brief 	Enable write operations and wait until effective (blocking)

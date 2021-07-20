@@ -1,5 +1,5 @@
 /**
-* @file cypressQSPI.h
+* @file Cypress_FLS_QSPI_Driver.h
 * @brief driver library for communicating with FL-S series QSPI flash memory
 * @author Reid Sox-Harris
 */

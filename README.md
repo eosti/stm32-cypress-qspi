@@ -42,6 +42,7 @@ Many commands are backwards compatible, meaning that other FL- series chips *may
 ## Example
 A example using this library is included for reference, based on the HAL QSPI examples built into STM32CubeIDE.
 A new project should be created, and then the example code can be copied into `main.c` and `main.h`, and the library files copied into the correct location.
+In order for them not to compile, the dot has been stripped from the file name; this is intentional.
 
 ## Issues
 Any issues, comments, complaints, suggestions? File an issue! Or, better yet, submit a PR!
