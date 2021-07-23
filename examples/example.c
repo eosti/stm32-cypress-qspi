@@ -3,6 +3,7 @@
  * @example examplec
  * A simple example, based on the HAL_QSPI demo
  */
+#ifdef CYPRESS_QSPI_EXAMPLE
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -19,7 +20,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define QSPI_DUMMY_50
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -32,12 +33,13 @@
 QSPI_HandleTypeDef hqspi;
 
 /* USER CODE BEGIN PV */
+// Volitile flags for callbacks
 __IO uint8_t CmdCplt, RxCplt, TxCplt, StatusMatch, TimeOut;
 
-/* Buffer used for transmission */
+// Buffer for transmission
 uint8_t aTxBuffer[] = " ****QSPI communication based on DMA****  ****QSPI communication based on DMA****  ****QSPI communication based on DMA****  ****QSPI communication based on DMA****  ****QSPI communication based on DMA****  ****QSPI communication based on DMA**** ";
 
-/* Buffer used for reception */
+// Buffer for reception
 uint8_t aRxBuffer[BUFFERSIZE];
 
 /* USER CODE END PV */
@@ -92,7 +94,7 @@ int main(void)
 	MX_QUADSPI_Init();
 	/* USER CODE BEGIN 2 */
 
-	// Configure SQPI memory
+	// Configure QSPI memory
 	Init_QSPI_Memory(&hqspi);
 
 	/* USER CODE END 2 */
@@ -104,22 +106,23 @@ int main(void)
 		switch(step)
 		{
 		case 1:
+            // Erase step
 			CmdCplt = 0;
 			StatusMatch = 0;
 
-			/* Initialize Reception buffer --------------------------------------- */
+            // Init reception buffer
 			for (index = 0; index < BUFFERSIZE; index++)
 			{
 				aRxBuffer[index] = 0;
 			}
 
-			// Erase the sector in interrupt mode
-			if	(Cypress_QSPI_SectorErase(&hqspi, address) != HAL_OK)
+			// Erase the sector in blocking mode (short operation, only one command)
+			if	(Cypress_QSPI_SectorErase_IT(&hqspi, address) != HAL_OK)
 			{
 				Error_Handler();
 			}
 
-			// Wait for memory ready
+			// Wait for memory ready in interrupt mode
 			Cypress_QSPI_WaitMemReady_IT(&hqspi);
 
 			step++;
@@ -128,6 +131,7 @@ int main(void)
 		case 2:
 			if(StatusMatch != 0)
 			{
+                // Program step
 				StatusMatch = 0;
 				TxCplt = 0;
 
@@ -137,7 +141,8 @@ int main(void)
 					Error_Handler();
 				}
 
-				if	(Cypress_QSPI_Program_IT(&hqspi, address, aTxBuffer, BUFFERSIZE) != HAL_OK)
+                // Write in interrupt mode
+				if	(Cypress_QSPI_ProgramQuad_IT(&hqspi, address, aTxBuffer, BUFFERSIZE) != HAL_OK)
 				{
 					Error_Handler();
 				}
@@ -149,10 +154,10 @@ int main(void)
 		case 3:
 			if(TxCplt != 0)
 			{
+                // Wait for the memory to be ready
 				TxCplt = 0;
 				StatusMatch = 0;
 
-				/* Configure automatic polling mode to wait for end of program ----- */
 				if	(Cypress_QSPI_WaitMemReady_IT(&hqspi) != HAL_OK)
 				{
 					Error_Handler();
@@ -165,10 +170,11 @@ int main(void)
 		case 4:
 			if(StatusMatch != 0)
 			{
+                // Read step
 				StatusMatch = 0;
 				RxCplt = 0;
 
-				/* Reading Sequence ------------------------------------------------ */
+                // Read back data in interrupt mode
 				if	(Cypress_QSPI_ReadQuad_IT(&hqspi, address, aRxBuffer, BUFFERSIZE))
 				{
 					Error_Handler();
@@ -181,9 +187,10 @@ int main(void)
 		case 5:
 			if (RxCplt != 0)
 			{
+                // Verify step
 				RxCplt = 0;
 
-				/* Result comparison ----------------------------------------------- */
+                // Make sure the reception buffer == transmission buffer
 				for (index = 0; index < BUFFERSIZE; index++)
 				{
 					if (aRxBuffer[index] != aTxBuffer[index])
@@ -465,29 +472,16 @@ static void Init_QSPI_Memory(QSPI_HandleTypeDef *hqspiInt)
 		Error_Handler();
 	}
 
-	// Clear SR1
-	uint8_t clearReg = 0U;
-	if	(Cypress_QSPI_WriteSR1(&hqspi, clearReg) != HAL_OK)
-	{
-		Error_Handler();
-	}
-
-
-	/* Read CR1 (0x35) */
+    // Get current state of CR
 	uint8_t configRegister;
 	if	(Cypress_QSPI_ReadCR(&hqspi, &configRegister) != HAL_OK)
 	{
 		Error_Handler();
 	}
 
-
-	/* Enable QSPI (Set bit 1 of CR1) and set dummy cycles (set bits 6, 7 of CR1) */
-	// DUMMY_LC /should/ be C0
-
-	configRegister = configRegister | CR1_QUAD | CR1_LC3;
-
-//	MODIFY_REG(configRegister, 0x00, 0x02);
-//	MODIFY_REG(configRegister, 0x00, 0xC0);
+    // Enable QSPI (set bit 1) and configure dummy cycles (bits 6,7)
+    MODIFY_REG(configRegister, 0x02, 0x02);
+    MODIFY_REG(configRegister, 0xC0, CYPRESS_DUMMY_LC);
 
 	if	(Cypress_QSPI_WriteCR(&hqspi, configRegister) != HAL_OK)
 	{
@@ -560,4 +554,5 @@ void assert_failed(uint8_t *file, uint32_t line)
 }
 #endif /* USE_FULL_ASSERT */
 
+#endif /* CYPRESS_QSPI_EXAMPLE */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

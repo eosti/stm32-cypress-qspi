@@ -2,6 +2,7 @@
 /**
  * @example exampleh
  */
+#ifdef CYPRESS_QSPI_EXAMPLE
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -88,4 +89,5 @@ void Error_Handler(void);
 
 #endif /* __MAIN_H */
 
+#endif /* CYPRESS_QSPI_EXAMPLE */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
