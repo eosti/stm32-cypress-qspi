@@ -790,7 +790,7 @@ HAL_StatusTypeDef Cypress_QSPI_ReadQuad(QSPI_HandleTypeDef *hqspi, uint32_t addr
 	sCommand.Address     		= address;
 	sCommand.DataMode    		= QSPI_DATA_4_LINES;
 	sCommand.NbData				= count;
-	sCommand.DummyCycles 		= DUMMY_CLOCK_CYCLES_READ_QUADIO;
+	sCommand.DummyCycles 		= CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -833,7 +833,7 @@ HAL_StatusTypeDef Cypress_QSPI_ReadQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t a
 	sCommand.Address     		= address;
 	sCommand.DataMode    		= QSPI_DATA_4_LINES;
 	sCommand.NbData				= count;
-	sCommand.DummyCycles 		= DUMMY_CLOCK_CYCLES_READ_QUADIO;
+	sCommand.DummyCycles 		= CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -877,7 +877,7 @@ HAL_StatusTypeDef Cypress_QSPI_ReadQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t 
 	sCommand.Address     		= address;
 	sCommand.DataMode    		= QSPI_DATA_4_LINES;
 	sCommand.NbData				= count;
-	sCommand.DummyCycles 		= DUMMY_CLOCK_CYCLES_READ_QUADIO;
+	sCommand.DummyCycles 		= CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{

@@ -194,55 +194,55 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
  * @brief	Dummy cycles for SDR, High Performance
  * @pre		Define QSPI_DUMMY_{50 | 80 | 90 | 104} based on the QSPI peripheral clock speed
  * @pre 	ex. for a peripheral speed of < 50 MHz, use `#define QSPI_DUMMY_50`
- * @retval	DUMMY_CLOCK_CYCLES_READ: dummy clock cycles for READ reads
- * @retval	DUMMY_CLOCK_CYCLES_FASTREAD: dummy clock cycles for FASTREAD reads
- * @retval	DUMMY_CLOCK_CYCLES_READ_DUAL: dummy clock cycles for DUAL reads
- * @retval	DUMMY_CLOCK_CYCLES_READ_DUALIO: dummy clock cycles for DUALIO reads
- * @retval	DUMMY_CLOCK_CYCLES_READ_QUAD: dummy clock cycles for QUAD reads
- * @retval	DUMMY_CLOCK_CYCLES_READ_QUADIO: dummy clock cycles for QUADIO reads
- * @retval	DUMMY_LC: Latency code for given speed
- * @post	User must set DUMMY_LC in CR1 for any read operations
+ * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ: dummy clock cycles for READ reads
+ * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD: dummy clock cycles for FASTREAD reads
+ * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL: dummy clock cycles for DUAL reads
+ * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO: dummy clock cycles for DUALIO reads
+ * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD: dummy clock cycles for QUAD reads
+ * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO: dummy clock cycles for QUADIO reads
+ * @retval	CYPRESS_DUMMY_LC: Latency code for given speed
+ * @post	User must set CYPRESS_DUMMY_LC in CR1 for any read operations
  */
 
 #if defined(QSPI_DUMMY_50)
 // Freq <= 50MHz
-#define DUMMY_CLOCK_CYCLES_READ				0
-#define DUMMY_CLOCK_CYCLES_FASTREAD         0
-#define DUMMY_CLOCK_CYCLES_READ_DUAL		0
-#define DUMMY_CLOCK_CYCLES_READ_DUALIO		4
-#define DUMMY_CLOCK_CYCLES_READ_QUAD		0
-#define DUMMY_CLOCK_CYCLES_READ_QUADIO      1
-#define DUMMY_LC							(CR1_LC3)
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ				0
+#define CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD         0
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL		0
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO		4
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD		0
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO      1
+#define CYPRESS_DUMMY_LC							(CR1_LC3)
 
 #elif defined(QSPI_DUMMY_90)
 // Freq <= 90MHz
-#define DUMMY_CLOCK_CYCLES_READ				NULL
-#define DUMMY_CLOCK_CYCLES_FASTREAD         8
-#define DUMMY_CLOCK_CYCLES_READ_DUAL		8
-#define DUMMY_CLOCK_CYCLES_READ_DUALIO		8
-#define DUMMY_CLOCK_CYCLES_READ_QUAD		5
-#define DUMMY_CLOCK_CYCLES_READ_QUADIO      4
-#define DUMMY_LC							(CR1_LC1)
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ				NULL
+#define CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD         8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL		8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO		8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD		5
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO      4
+#define CYPRESS_DUMMY_LC							(CR1_LC1)
 
 #elif defined(QSPI_DUMMY_104)
 // Freq <= 104MHz
-#define DUMMY_CLOCK_CYCLES_READ				NULL
-#define DUMMY_CLOCK_CYCLES_FASTREAD         8
-#define DUMMY_CLOCK_CYCLES_READ_DUAL		8
-#define DUMMY_CLOCK_CYCLES_READ_DUALIO		8
-#define DUMMY_CLOCK_CYCLES_READ_QUAD		6
-#define DUMMY_CLOCK_CYCLES_READ_QUADIO      5
-#define DUMMY_LC							(CR1_LC2)
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ				NULL
+#define CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD         8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL		8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO		8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD		6
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO      5
+#define CYPRESS_DUMMY_LC							(CR1_LC2)
 
 #else
 // Freq <= 80MHz, default chip configuration
-#define DUMMY_CLOCK_CYCLES_READ				NULL
-#define DUMMY_CLOCK_CYCLES_FASTREAD         8
-#define DUMMY_CLOCK_CYCLES_READ_DUAL		8
-#define DUMMY_CLOCK_CYCLES_READ_DUALIO		8
-#define DUMMY_CLOCK_CYCLES_READ_QUAD		4
-#define DUMMY_CLOCK_CYCLES_READ_QUADIO      4
-#define DUMMY_LC							(CR1_LC0)
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ				NULL
+#define CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD         8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL		8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO		8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD		4
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO      4
+#define CYPRESS_DUMMY_LC							(CR1_LC0)
 
 #endif // End QSPI_DUMMY
 
