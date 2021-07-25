@@ -33,16 +33,21 @@ HAL_StatusTypeDef Cypress_QSPI_WriteEnable(QSPI_HandleTypeDef *hqspi)
 	QSPI_AutoPollingTypeDef sConfig;
 
 	// Send WREN
-	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.Instruction       	= WRITE_ENABLE_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
 	sCommand.DataMode          	= QSPI_DATA_NONE;
-	sCommand.DummyCycles       	= 0;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.NbData			   	= 0;
+
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -52,9 +57,9 @@ HAL_StatusTypeDef Cypress_QSPI_WriteEnable(QSPI_HandleTypeDef *hqspi)
 	// Poll SR1 until bit 1 is set, thus write is enabled
 	sConfig.Match           	= 0x02;
 	sConfig.Mask            	= SR1_WREN;
-	sConfig.MatchMode       	= QSPI_MATCH_MODE_AND;
-	sConfig.StatusBytesSize 	= 1;
 	sConfig.Interval        	= 0x10;
+	sConfig.StatusBytesSize 	= 1;
+	sConfig.MatchMode       	= QSPI_MATCH_MODE_AND;
 	sConfig.AutomaticStop   	= QSPI_AUTOMATIC_STOP_ENABLE;
 
 	sCommand.Instruction    	= READ_STATUS_REG1_CMD;
@@ -78,16 +83,20 @@ HAL_StatusTypeDef Cypress_QSPI_WriteDisable(QSPI_HandleTypeDef *hqspi)
 {
 	QSPI_CommandTypeDef		sCommand;
 
-	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.Instruction       	= WRITE_DISABLE_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
 	sCommand.DataMode          	= QSPI_DATA_NONE;
-	sCommand.DummyCycles       	= 0;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.NbData			   	= 0;
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -136,16 +145,20 @@ HAL_StatusTypeDef Cypress_QSPI_WaitMemReady(QSPI_HandleTypeDef *hqspi)
 	QSPI_AutoPollingTypeDef sConfig;
 
 	// Read SR1
-	sCommand.InstructionMode	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.Instruction       	= READ_STATUS_REG1_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
 	sCommand.DataMode          	= QSPI_DATA_1_LINE;
-	sCommand.DummyCycles       	= 0;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -156,9 +169,9 @@ HAL_StatusTypeDef Cypress_QSPI_WaitMemReady(QSPI_HandleTypeDef *hqspi)
 	// Look for bit zero, Write In Progress, to become 0 -> device ready
 	sConfig.Match           	= 0x00;
 	sConfig.Mask            	= SR1_WIP;
-	sConfig.MatchMode       	= QSPI_MATCH_MODE_AND;
-	sConfig.StatusBytesSize 	= 1;
 	sConfig.Interval        	= 0x10;
+	sConfig.StatusBytesSize 	= 1;
+	sConfig.MatchMode       	= QSPI_MATCH_MODE_AND;
 	sConfig.AutomaticStop   	= QSPI_AUTOMATIC_STOP_ENABLE;
 
 	// Keep checking until bit set
@@ -183,12 +196,17 @@ HAL_StatusTypeDef Cypress_QSPI_WaitMemReady_IT(QSPI_HandleTypeDef *hqspi)
 	QSPI_AutoPollingTypeDef sConfig;
 
 	// Read SR1
-	sCommand.InstructionMode	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.Instruction       	= READ_STATUS_REG1_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
 	sCommand.DataMode          	= QSPI_DATA_1_LINE;
-	sCommand.DummyCycles       	= 0;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
@@ -227,16 +245,20 @@ HAL_StatusTypeDef Cypress_QSPI_ReadSR1(QSPI_HandleTypeDef *hqspi, uint8_t *resul
 {
 	QSPI_CommandTypeDef		sCommand;
 
-	sCommand.InstructionMode	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.Instruction       	= READ_STATUS_REG1_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
 	sCommand.DataMode          	= QSPI_DATA_1_LINE;
-	sCommand.DummyCycles       	= 0;
+	sCommand.NbData			   	= 1;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.NbData            	= 1;
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -262,16 +284,20 @@ HAL_StatusTypeDef Cypress_QSPI_ReadSR2(QSPI_HandleTypeDef *hqspi, uint8_t *resul
 {
 	QSPI_CommandTypeDef		sCommand;
 
-	sCommand.InstructionMode	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.Instruction       	= READ_STATUS_REG2_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
 	sCommand.DataMode          	= QSPI_DATA_1_LINE;
-	sCommand.DummyCycles       	= 0;
+	sCommand.NbData			   	= 1;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.NbData            	= 1;
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -297,16 +323,20 @@ HAL_StatusTypeDef Cypress_QSPI_ReadCR(QSPI_HandleTypeDef *hqspi, uint8_t *result
 {
 	QSPI_CommandTypeDef		sCommand;
 
-	sCommand.InstructionMode	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.Instruction       	= READ_CONFIGURATION_REG1_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
 	sCommand.DataMode          	= QSPI_DATA_1_LINE;
-	sCommand.DummyCycles       	= 0;
+	sCommand.NbData			   	= 1;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.NbData            	= 1;
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -331,16 +361,20 @@ HAL_StatusTypeDef Cypress_QSPI_ClearSR(QSPI_HandleTypeDef *hqspi)
 {
 	QSPI_CommandTypeDef		sCommand;
 
-	sCommand.InstructionMode   = QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       = QSPI_ADDRESS_32_BITS;
-	sCommand.AlternateByteMode = QSPI_ALTERNATE_BYTES_NONE;
-	sCommand.DdrMode           = QSPI_DDR_MODE_DISABLE;
-	sCommand.DdrHoldHalfCycle  = QSPI_DDR_HHC_ANALOG_DELAY;
-	sCommand.SIOOMode          = QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction       = CLEAR_STATUS_REG1_CMD;
-	sCommand.AddressMode       = QSPI_ADDRESS_NONE;
-	sCommand.DataMode          = QSPI_DATA_NONE;
-	sCommand.DummyCycles       = 0;
+	sCommand.Instruction       	= CLEAR_STATUS_REG1_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
+	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
+	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_NONE;
+	sCommand.NbData			   	= 0;
+	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
+	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
+	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -388,16 +422,20 @@ HAL_StatusTypeDef Cypress_QSPI_WriteSR1(QSPI_HandleTypeDef *hqspi, uint8_t sReg)
 
 	QSPI_CommandTypeDef sCommand;
 
-	sCommand.InstructionMode   = QSPI_INSTRUCTION_1_LINE;
-	sCommand.AlternateByteMode = QSPI_ALTERNATE_BYTES_NONE;
-	sCommand.DdrMode           = QSPI_DDR_MODE_DISABLE;
-	sCommand.DdrHoldHalfCycle  = QSPI_DDR_HHC_ANALOG_DELAY;
-	sCommand.SIOOMode          = QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.AddressMode       = QSPI_ADDRESS_NONE;
-	sCommand.DataMode          = QSPI_DATA_1_LINE;
-	sCommand.Instruction       = WRITE_STATUS_CMD_REG_CMD;
-	sCommand.DummyCycles       = 0;
-	sCommand.NbData			   = 1;
+	sCommand.Instruction       	= WRITE_STATUS_CMD_REG_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
+	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
+	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_1_LINE;
+	sCommand.NbData			   	= 1;
+	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
+	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
+	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -439,16 +477,20 @@ HAL_StatusTypeDef Cypress_QSPI_WriteCR(QSPI_HandleTypeDef *hqspi, uint8_t cReg)
 	// Send configuration
 	QSPI_CommandTypeDef sCommand;
 
-	sCommand.InstructionMode   = QSPI_INSTRUCTION_1_LINE;
-	sCommand.AlternateByteMode = QSPI_ALTERNATE_BYTES_NONE;
-	sCommand.DdrMode           = QSPI_DDR_MODE_DISABLE;
-	sCommand.DdrHoldHalfCycle  = QSPI_DDR_HHC_ANALOG_DELAY;
-	sCommand.SIOOMode          = QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.AddressMode       = QSPI_ADDRESS_NONE;
-	sCommand.DataMode          = QSPI_DATA_1_LINE;
-	sCommand.Instruction       = WRITE_STATUS_CMD_REG_CMD;
-	sCommand.DummyCycles       = 0;
-	sCommand.NbData			   = 2;
+	sCommand.Instruction       	= WRITE_STATUS_CMD_REG_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
+	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
+	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_1_LINE;
+	sCommand.NbData			   	= 2;
+	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
+	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
+	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -482,17 +524,20 @@ HAL_StatusTypeDef Cypress_QSPI_SectorErase(QSPI_HandleTypeDef *hqspi, uint32_t a
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= SECTOR_ERASE_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_NONE;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= SECTOR_ERASE_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_NONE;
-	sCommand.DummyCycles 		= 0;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -530,17 +575,20 @@ HAL_StatusTypeDef Cypress_QSPI_SectorErase_IT(QSPI_HandleTypeDef *hqspi, uint32_
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= SECTOR_ERASE_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_NONE;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= SECTOR_ERASE_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_NONE;
-	sCommand.DummyCycles 		= 0;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -570,16 +618,20 @@ HAL_StatusTypeDef Cypress_QSPI_BulkErase(QSPI_HandleTypeDef *hqspi)
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= BULK_ERASE_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_NONE;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= BULK_ERASE_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_NONE;
-	sCommand.DataMode    		= QSPI_DATA_NONE;
-	sCommand.DummyCycles 		= 0;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -616,16 +668,20 @@ HAL_StatusTypeDef Cypress_QSPI_BulkErase_IT(QSPI_HandleTypeDef *hqspi)
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= BULK_ERASE_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_NONE;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= BULK_ERASE_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_NONE;
-	sCommand.DataMode    		= QSPI_DATA_NONE;
-	sCommand.DummyCycles 		= 0;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -656,17 +712,20 @@ HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address,
 {
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= READ_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_1_LINE;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= READ_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_1_LINE;
-	sCommand.NbData				= count;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -695,17 +754,20 @@ HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t addre
 {
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= READ_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_1_LINE;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= READ_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_1_LINE;
-	sCommand.NbData				= count;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -735,17 +797,20 @@ HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t addr
 {
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= READ_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_1_LINE;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= READ_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_1_LINE;
-	sCommand.NbData				= count;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -777,20 +842,20 @@ HAL_StatusTypeDef Cypress_QSPI_ReadQuad(QSPI_HandleTypeDef *hqspi, uint32_t addr
 {
 	QSPI_CommandTypeDef sCommand;
 
-	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
-	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_4_LINES;
+	sCommand.Instruction       	= QUAD_INOUT_FAST_READ_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
 	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
 	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
+	sCommand.AddressMode       	= QSPI_ADDRESS_4_LINES;
+	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_4_LINES;
+	sCommand.DataMode          	= QSPI_DATA_4_LINES;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= QUAD_INOUT_FAST_READ_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_4_LINES;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_4_LINES;
-	sCommand.NbData				= count;
-	sCommand.DummyCycles 		= CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -820,20 +885,20 @@ HAL_StatusTypeDef Cypress_QSPI_ReadQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t a
 {
 	QSPI_CommandTypeDef sCommand;
 
-	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
-	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_4_LINES;
+	sCommand.Instruction       	= QUAD_INOUT_FAST_READ_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
 	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
 	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
+	sCommand.AddressMode       	= QSPI_ADDRESS_4_LINES;
+	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_4_LINES;
+	sCommand.DataMode          	= QSPI_DATA_4_LINES;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= QUAD_INOUT_FAST_READ_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_4_LINES;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_4_LINES;
-	sCommand.NbData				= count;
-	sCommand.DummyCycles 		= CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -864,20 +929,20 @@ HAL_StatusTypeDef Cypress_QSPI_ReadQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t 
 {
 	QSPI_CommandTypeDef sCommand;
 
-	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
-	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_4_LINES;
+	sCommand.Instruction       	= QUAD_INOUT_FAST_READ_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
 	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
 	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
+	sCommand.AddressMode       	= QSPI_ADDRESS_4_LINES;
+	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_4_LINES;
+	sCommand.DataMode          	= QSPI_DATA_4_LINES;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= QUAD_INOUT_FAST_READ_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_4_LINES;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_4_LINES;
-	sCommand.NbData				= count;
-	sCommand.DummyCycles 		= CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -908,17 +973,20 @@ HAL_StatusTypeDef Cypress_QSPI_Program(QSPI_HandleTypeDef *hqspi, uint32_t addre
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= PAGE_PROG_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_1_LINE;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= PAGE_PROG_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_1_LINE;
-	sCommand.NbData				= count;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -955,17 +1023,20 @@ HAL_StatusTypeDef Cypress_QSPI_Program_IT(QSPI_HandleTypeDef *hqspi, uint32_t ad
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= PAGE_PROG_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_1_LINE;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= PAGE_PROG_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_1_LINE;
-	sCommand.NbData				= count;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -999,17 +1070,20 @@ HAL_StatusTypeDef Cypress_QSPI_Program_DMA(QSPI_HandleTypeDef *hqspi, uint32_t a
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= PAGE_PROG_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_1_LINE;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= PAGE_PROG_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_1_LINE;
-	sCommand.NbData				= count;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -1042,17 +1116,20 @@ HAL_StatusTypeDef Cypress_QSPI_ProgramQuad(QSPI_HandleTypeDef *hqspi, uint32_t a
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= QUAD_IN_FAST_PROG_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_4_LINES;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= QUAD_IN_FAST_PROG_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_4_LINES;
-	sCommand.NbData				= count;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -1090,17 +1167,20 @@ HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= QUAD_IN_FAST_PROG_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_4_LINES;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= QUAD_IN_FAST_PROG_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_4_LINES;
-	sCommand.NbData				= count;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -1135,17 +1215,20 @@ HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32
 
 	QSPI_CommandTypeDef sCommand;
 
+	sCommand.Instruction       	= QUAD_IN_FAST_PROG_4_BYTE_ADDR_CMD;
+	sCommand.Address         	= address;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
 	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
-	sCommand.AddressSize       	= QSPI_ADDRESS_32_BITS;
+	sCommand.AddressMode       	= QSPI_ADDRESS_1_LINE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
+	sCommand.DataMode          	= QSPI_DATA_4_LINES;
+	sCommand.NbData			   	= count;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.Instruction 		= QUAD_IN_FAST_PROG_4_BYTE_ADDR_CMD;
-	sCommand.AddressMode 		= QSPI_ADDRESS_1_LINE;
-	sCommand.Address     		= address;
-	sCommand.DataMode    		= QSPI_DATA_4_LINES;
-	sCommand.NbData				= count;
 
 	if	(HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -1172,16 +1255,20 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi)
 {
 	QSPI_CommandTypeDef		sCommand;
 
-	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.Instruction       	= SOFTWARE_RESET_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
 	sCommand.DataMode          	= QSPI_DATA_NONE;
-	sCommand.DummyCycles       	= 0;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.NbData			   	= 0;
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -1201,16 +1288,20 @@ HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi)
 {
 	QSPI_CommandTypeDef		sCommand;
 
-	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.Instruction       	= MODE_BIT_RESET_CMD;
+	sCommand.Address         	= 0;
+	sCommand.AlternateBytes		= 0;
+	sCommand.AddressSize		= QSPI_ADDRESS_32_BITS;
+	sCommand.AlternateBytesSize	= QSPI_ALTERNATE_BYTES_8_BITS;
+	sCommand.DummyCycles       	= 0;
+	sCommand.InstructionMode   	= QSPI_INSTRUCTION_1_LINE;
 	sCommand.AddressMode       	= QSPI_ADDRESS_NONE;
 	sCommand.AlternateByteMode 	= QSPI_ALTERNATE_BYTES_NONE;
 	sCommand.DataMode          	= QSPI_DATA_NONE;
-	sCommand.DummyCycles       	= 0;
+	sCommand.NbData			   	= 0;
 	sCommand.DdrMode           	= QSPI_DDR_MODE_DISABLE;
 	sCommand.DdrHoldHalfCycle  	= QSPI_DDR_HHC_ANALOG_DELAY;
 	sCommand.SIOOMode          	= QSPI_SIOO_INST_EVERY_CMD;
-	sCommand.NbData			   	= 0;
 
 	if (HAL_QSPI_Command(hqspi, &sCommand, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
 	{
@@ -1221,3 +1312,4 @@ HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi)
 }
 
 /** @} */
+
