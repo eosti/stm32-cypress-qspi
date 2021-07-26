@@ -16,8 +16,10 @@
 HAL_StatusTypeDef Cypress_QSPI_WriteEnable(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef Cypress_QSPI_WriteDisable(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef Cypress_QSPI_ErrorRecovery(QSPI_HandleTypeDef *hqspi);
-HAL_StatusTypeDef Cypress_QSPI_WaitMemReady(QSPI_HandleTypeDef *hqspi);
+HAL_StatusTypeDef Cypress_QSPI_WaitMemReady(QSPI_HandleTypeDef *hqspi, uint32_t timeout);
 HAL_StatusTypeDef Cypress_QSPI_WaitMemReady_IT(QSPI_HandleTypeDef *hqspi);
+HAL_StatusTypeDef Cypress_QSPI_WaitWriteReady(QSPI_HandleTypeDef *hqspi, uint32_t timeout);
+HAL_StatusTypeDef Cypress_QSPI_WaitWriteReady_IT(QSPI_HandleTypeDef *hqspi);
 
 HAL_StatusTypeDef Cypress_QSPI_ReadSR1(QSPI_HandleTypeDef *hqspi, uint8_t* result);
 HAL_StatusTypeDef Cypress_QSPI_ReadSR2(QSPI_HandleTypeDef *hqspi, uint8_t* result);
@@ -47,6 +49,9 @@ HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32
 
 HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
+HAL_StatusTypeDef Cypress_QSPI_ResetConfiguration(QSPI_HandleTypeDef *hqspi);
+void Cypress_QSPI_DisableWP(GPIO_TypeDef *GPIO_Port, uint32_t GPIO_Pin);
+void Cypress_QSPI_ResetWP(GPIO_TypeDef *GPIO_Port, uint32_t GPIO_Pin);
 
 /* FL-S series Commands */
 /* Reset Operations */
@@ -190,61 +195,68 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi);
 
 
 /**
- * @defgroup	QSPI_DUMMY QSPI Dummy clock configuration
- * @brief	Dummy cycles for SDR, High Performance
- * @pre		Define QSPI_DUMMY_{50 | 80 | 90 | 104} based on the QSPI peripheral clock speed
- * @pre 	ex. for a peripheral speed of < 50 MHz, use `#define QSPI_DUMMY_50`
- * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ: dummy clock cycles for READ reads
- * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD: dummy clock cycles for FASTREAD reads
- * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL: dummy clock cycles for DUAL reads
- * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO: dummy clock cycles for DUALIO reads
- * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD: dummy clock cycles for QUAD reads
- * @retval	CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO: dummy clock cycles for QUADIO reads
- * @retval	CYPRESS_DUMMY_LC: Latency code for given speed
- * @post	User must set CYPRESS_DUMMY_LC in CR1 for any read operations
- */
+* @defgroup    QSPI_DUMMY QSPI Dummy clock configuration
+* @brief   Dummy cycles for SDR, High Performance
+* @pre     Define QSPI_DUMMY_{50 | 80 | 90 | 104} based on the QSPI peripheral clock speed
+* @pre     ex. for a peripheral speed of < 50 MHz, use `#define QSPI_DUMMY_50`
+* @retval  CYPRESS_DUMMY_CLOCK_CYCLES_READ: dummy clock cycles for READ reads
+* @retval  CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD: dummy clock cycles for FASTREAD reads
+* @retval  CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL: dummy clock cycles for DUAL reads
+* @retval  CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO: dummy clock cycles for DUALIO reads
+* @retval  CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD: dummy clock cycles for QUAD reads
+* @retval  CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO: dummy clock cycles for QUADIO reads
+* @retval  CYPRESS_DUMMY_LC: Latency code for given speed
+* @post    User must set CYPRESS_DUMMY_LC in CR1 for any read operations
+*/
 
 #if defined(QSPI_DUMMY_50)
 // Freq <= 50MHz
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ				0
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ             0
 #define CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD         0
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL		0
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO		4
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD		0
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL        0
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO      4
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD        0
 #define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO      1
-#define CYPRESS_DUMMY_LC							(CR1_LC3)
+#define CYPRESS_DUMMY_LC                            (CR1_LC3)
 
 #elif defined(QSPI_DUMMY_90)
 // Freq <= 90MHz
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ				NULL
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ             NULL
 #define CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD         8
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL		8
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO		8
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD		5
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL        8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO      8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD        5
 #define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO      4
-#define CYPRESS_DUMMY_LC							(CR1_LC1)
+#define CYPRESS_DUMMY_LC                            (CR1_LC1)
 
 #elif defined(QSPI_DUMMY_104)
 // Freq <= 104MHz
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ				NULL
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ             NULL
 #define CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD         8
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL		8
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO		8
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD		6
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL        8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO      8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD        6
 #define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO      5
-#define CYPRESS_DUMMY_LC							(CR1_LC2)
+#define CYPRESS_DUMMY_LC                            (CR1_LC2)
 
 #else
 // Freq <= 80MHz, default chip configuration
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ				NULL
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ             NULL
 #define CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD         8
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL		8
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO		8
-#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD		4
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL        8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO      8
+#define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD        4
 #define CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO      4
-#define CYPRESS_DUMMY_LC							(CR1_LC0)
+#define CYPRESS_DUMMY_LC                            (CR1_LC0)
 
 #endif // End QSPI_DUMMY
 
+/* Bulk erase timeouts */
+// These are required for erase function timeouts
+// For ease, these are the sizes for the 512MB unit
+// Presumably, this will have the longest erase times, so is a safe default for all sizes
+#define BULK_ERASE_MAX_TIME                   460000
+#define SECTOR_ERASE_MAX_TIME                 2600
 
 #endif /* INC_CYPRESSQSPI_H_ */
+
