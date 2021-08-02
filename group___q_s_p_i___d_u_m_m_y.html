@@ -92,26 +92,28 @@ $(document).ready(function(){initNavTree('group___q_s_p_i___d_u_m_m_y.html','');
 <p>Dummy cycles for SDR, High Performance. </p>
 <dl class="section pre"><dt>Precondition</dt><dd>Define QSPI_DUMMY_{50 | 80 | 90 | 104} based on the QSPI peripheral clock speed </dd>
 <dd>
-ex. for a peripheral speed of &lt; 50 MHz, use <code>#define QSPI_DUMMY_50</code> </dd></dl>
+ex. for a peripheral speed of &lt; 50 MHz, use <code>#define QSPI_DUMMY_50</code> </dd>
+<dd>
+This should be set in a global location </dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname">DUMMY_CLOCK_CYCLES_READ</td><td>dummy clock cycles for READ reads </td></tr>
-    <tr><td class="paramname">DUMMY_CLOCK_CYCLES_FASTREAD</td><td>dummy clock cycles for FASTREAD reads </td></tr>
-    <tr><td class="paramname">DUMMY_CLOCK_CYCLES_READ_DUAL</td><td>dummy clock cycles for DUAL reads </td></tr>
-    <tr><td class="paramname">DUMMY_CLOCK_CYCLES_READ_DUALIO</td><td>dummy clock cycles for DUALIO reads </td></tr>
-    <tr><td class="paramname">DUMMY_CLOCK_CYCLES_READ_QUAD</td><td>dummy clock cycles for QUAD reads </td></tr>
-    <tr><td class="paramname">DUMMY_CLOCK_CYCLES_READ_QUADIO</td><td>dummy clock cycles for QUADIO reads </td></tr>
-    <tr><td class="paramname">DUMMY_LC</td><td>Latency code for given speed </td></tr>
+    <tr><td class="paramname">CYPRESS_DUMMY_CLOCK_CYCLES_READ</td><td>dummy clock cycles for READ reads </td></tr>
+    <tr><td class="paramname">CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD</td><td>dummy clock cycles for FASTREAD reads </td></tr>
+    <tr><td class="paramname">CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL</td><td>dummy clock cycles for DUAL reads </td></tr>
+    <tr><td class="paramname">CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUALIO</td><td>dummy clock cycles for DUALIO reads </td></tr>
+    <tr><td class="paramname">CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD</td><td>dummy clock cycles for QUAD reads </td></tr>
+    <tr><td class="paramname">CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUADIO</td><td>dummy clock cycles for QUADIO reads </td></tr>
+    <tr><td class="paramname">CYPRESS_DUMMY_LC</td><td>Latency code for given speed </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section post"><dt>Postcondition</dt><dd>User must set DUMMY_LC in CR1 for any read operations </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>User must set CYPRESS_DUMMY_LC in CR1 for any read operations </dd></dl>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jul 20 2021 04:29:39 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Aug 2 2021 05:28:36 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

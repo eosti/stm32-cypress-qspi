@@ -104,12 +104,18 @@ Functions</h2></td></tr>
 <tr class="memitem:gae169168fd59c82c3fbb70268634a95a4"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#gae169168fd59c82c3fbb70268634a95a4">Cypress_QSPI_ErrorRecovery</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
 <tr class="memdesc:gae169168fd59c82c3fbb70268634a95a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for program/erase error, and then recover by clearing the SR and disabling the write.  <a href="group__functions.html#gae169168fd59c82c3fbb70268634a95a4">More...</a><br /></td></tr>
 <tr class="separator:gae169168fd59c82c3fbb70268634a95a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9841d966732a61a2445d80374301ac81"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#ga9841d966732a61a2445d80374301ac81">Cypress_QSPI_WaitMemReady</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
-<tr class="memdesc:ga9841d966732a61a2445d80374301ac81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the SR until the WIP bit is unset (blocking)  <a href="group__functions.html#ga9841d966732a61a2445d80374301ac81">More...</a><br /></td></tr>
-<tr class="separator:ga9841d966732a61a2445d80374301ac81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabbfccc9ad99dea405c3001344cae02d7"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#gabbfccc9ad99dea405c3001344cae02d7">Cypress_QSPI_WaitMemReady</a> (QSPI_HandleTypeDef *hqspi, uint32_t timeout)</td></tr>
+<tr class="memdesc:gabbfccc9ad99dea405c3001344cae02d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the SR until the WIP bit is unset (blocking)  <a href="group__functions.html#gabbfccc9ad99dea405c3001344cae02d7">More...</a><br /></td></tr>
+<tr class="separator:gabbfccc9ad99dea405c3001344cae02d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga478f7be38d1ec05d6ab754a0038da8a2"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#ga478f7be38d1ec05d6ab754a0038da8a2">Cypress_QSPI_WaitMemReady_IT</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
 <tr class="memdesc:ga478f7be38d1ec05d6ab754a0038da8a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the SR until the WIP bit is unset (non-blocking, requires interrupts)  <a href="group__functions.html#ga478f7be38d1ec05d6ab754a0038da8a2">More...</a><br /></td></tr>
 <tr class="separator:ga478f7be38d1ec05d6ab754a0038da8a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a2a691072fd33f930eadb6f38aca714"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#ga2a2a691072fd33f930eadb6f38aca714">Cypress_QSPI_WaitWriteReady</a> (QSPI_HandleTypeDef *hqspi, uint32_t timeout)</td></tr>
+<tr class="memdesc:ga2a2a691072fd33f930eadb6f38aca714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the SR until the WREN bit is set (blocking)  <a href="group__functions.html#ga2a2a691072fd33f930eadb6f38aca714">More...</a><br /></td></tr>
+<tr class="separator:ga2a2a691072fd33f930eadb6f38aca714"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7e5c9b0b63c849b02c1c610b25681c8"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#gac7e5c9b0b63c849b02c1c610b25681c8">Cypress_QSPI_WaitWriteReady_IT</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
+<tr class="memdesc:gac7e5c9b0b63c849b02c1c610b25681c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the SR until the WREN bit is set (non-blocking, requires interrupts)  <a href="group__functions.html#gac7e5c9b0b63c849b02c1c610b25681c8">More...</a><br /></td></tr>
+<tr class="separator:gac7e5c9b0b63c849b02c1c610b25681c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga451bcd12ef73cf928dc3e7e1d8cd5262"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#ga451bcd12ef73cf928dc3e7e1d8cd5262">Cypress_QSPI_ReadSR1</a> (QSPI_HandleTypeDef *hqspi, uint8_t *result)</td></tr>
 <tr class="memdesc:ga451bcd12ef73cf928dc3e7e1d8cd5262"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads SR1 to a variable.  <a href="group__functions.html#ga451bcd12ef73cf928dc3e7e1d8cd5262">More...</a><br /></td></tr>
 <tr class="separator:ga451bcd12ef73cf928dc3e7e1d8cd5262"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,6 +161,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga25d071a350ab183117b6c710106879ca"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#ga25d071a350ab183117b6c710106879ca">Cypress_QSPI_ReadQuad</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)</td></tr>
 <tr class="memdesc:ga25d071a350ab183117b6c710106879ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data into memory using QSPI (blocking)  <a href="group__functions.html#ga25d071a350ab183117b6c710106879ca">More...</a><br /></td></tr>
 <tr class="separator:ga25d071a350ab183117b6c710106879ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafb8114ee33f3c621241903db9b3766fa"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#gafb8114ee33f3c621241903db9b3766fa">Cypress_QSPI_ReadQuadAlt</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)</td></tr>
+<tr class="memdesc:gafb8114ee33f3c621241903db9b3766fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data into memory using QSPI (blocking)  <a href="group__functions.html#gafb8114ee33f3c621241903db9b3766fa">More...</a><br /></td></tr>
+<tr class="separator:gafb8114ee33f3c621241903db9b3766fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6dca7762a4052e2cf33f227907deb351"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#ga6dca7762a4052e2cf33f227907deb351">Cypress_QSPI_ReadQuad_IT</a> (QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)</td></tr>
 <tr class="memdesc:ga6dca7762a4052e2cf33f227907deb351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data into memory using QSPI (nonblocking, requires callbacks)  <a href="group__functions.html#ga6dca7762a4052e2cf33f227907deb351">More...</a><br /></td></tr>
 <tr class="separator:ga6dca7762a4052e2cf33f227907deb351"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,6 +194,15 @@ Functions</h2></td></tr>
 <tr class="memitem:gadb7ce34701807ade0a1eb178696b2a7b"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#gadb7ce34701807ade0a1eb178696b2a7b">Cypress_QSPI_ModeBitReset</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
 <tr class="memdesc:gadb7ce34701807ade0a1eb178696b2a7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces device into normal mode after continuous high performance read mode.  <a href="group__functions.html#gadb7ce34701807ade0a1eb178696b2a7b">More...</a><br /></td></tr>
 <tr class="separator:gadb7ce34701807ade0a1eb178696b2a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga39439e97164ae14d5a1a2c7dd75bc71f"><td class="memItemLeft" align="right" valign="top">HAL_StatusTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#ga39439e97164ae14d5a1a2c7dd75bc71f">Cypress_QSPI_ResetConfiguration</a> (QSPI_HandleTypeDef *hqspi)</td></tr>
+<tr class="memdesc:ga39439e97164ae14d5a1a2c7dd75bc71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all configuration to default @warn This will unset the QUAD bit and may result in write protection being set; see <a class="el" href="group__functions.html#ga6838dc3b2a2b92a2e0ebd77b19692b5d">Cypress_QSPI_DisableWP</a>.  <a href="group__functions.html#ga39439e97164ae14d5a1a2c7dd75bc71f">More...</a><br /></td></tr>
+<tr class="separator:ga39439e97164ae14d5a1a2c7dd75bc71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6838dc3b2a2b92a2e0ebd77b19692b5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#ga6838dc3b2a2b92a2e0ebd77b19692b5d">Cypress_QSPI_DisableWP</a> (GPIO_TypeDef *GPIO_Port, uint32_t GPIO_Pin)</td></tr>
+<tr class="memdesc:ga6838dc3b2a2b92a2e0ebd77b19692b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables Write Protection.  <a href="group__functions.html#ga6838dc3b2a2b92a2e0ebd77b19692b5d">More...</a><br /></td></tr>
+<tr class="separator:ga6838dc3b2a2b92a2e0ebd77b19692b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga36a2e8593453ccd8f6143cbfbcf55fe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__functions.html#ga36a2e8593453ccd8f6143cbfbcf55fe6">Cypress_QSPI_ResetWP</a> (GPIO_TypeDef *GPIO_Port, uint32_t GPIO_Pin)</td></tr>
+<tr class="memdesc:ga36a2e8593453ccd8f6143cbfbcf55fe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets write protection pin.  <a href="group__functions.html#ga36a2e8593453ccd8f6143cbfbcf55fe6">More...</a><br /></td></tr>
+<tr class="separator:ga36a2e8593453ccd8f6143cbfbcf55fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>driver library for communicating with FL-S series QSPI flash memory </p>
@@ -195,7 +213,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_cypress___f_l_s___q_s_p_i___driver_8c.html">Cypress_FLS_QSPI_Driver.c</a></li>
-    <li class="footer">Generated on Tue Jul 20 2021 04:29:39 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Aug 2 2021 05:28:36 for STM32 Cypress QSPI by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
