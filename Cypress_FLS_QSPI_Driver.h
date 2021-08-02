@@ -38,6 +38,7 @@ HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address,
 HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
 HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
 HAL_StatusTypeDef Cypress_QSPI_ReadQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
+HAL_StatusTypeDef Cypress_QSPI_ReadQuadAlt(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
 HAL_StatusTypeDef Cypress_QSPI_ReadQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
 HAL_StatusTypeDef Cypress_QSPI_ReadQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count);
 HAL_StatusTypeDef Cypress_QSPI_Program(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count);
@@ -199,6 +200,7 @@ void Cypress_QSPI_ResetWP(GPIO_TypeDef *GPIO_Port, uint32_t GPIO_Pin);
 * @brief   Dummy cycles for SDR, High Performance
 * @pre     Define QSPI_DUMMY_{50 | 80 | 90 | 104} based on the QSPI peripheral clock speed
 * @pre     ex. for a peripheral speed of < 50 MHz, use `#define QSPI_DUMMY_50`
+* @pre     This should be set in a global location
 * @retval  CYPRESS_DUMMY_CLOCK_CYCLES_READ: dummy clock cycles for READ reads
 * @retval  CYPRESS_DUMMY_CLOCK_CYCLES_FASTREAD: dummy clock cycles for FASTREAD reads
 * @retval  CYPRESS_DUMMY_CLOCK_CYCLES_READ_DUAL: dummy clock cycles for DUAL reads

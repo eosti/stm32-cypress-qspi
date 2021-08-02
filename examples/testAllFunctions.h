@@ -1,10 +1,8 @@
 /* USER CODE BEGIN Header */
 /**
  * @example example.h
- * @author  Reid Sox-Harris (@eosti) 
  * A simple interrupt-based example, based on the HAL_QSPI demo
  */
-#ifdef CYPRESS_QSPI_EXAMPLE
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -31,15 +29,9 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 
-// QSPI clock is running < 50MHz
-#define QSPI_DUMMY_50
-
 // S25FL512S Info
 #define QSPI_FLASH_SIZE                      29		// Bits to represent address
 #define QSPI_PAGE_SIZE                       256
-
-#define BULK_ERASE_MAX_TIME                   460000
-#define SECTOR_ERASE_MAX_TIME                 2600
 
 /* Size of buffers */
 #define BUFFERSIZE                 (COUNTOF(aTxBuffer) - 1)
@@ -65,10 +57,13 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define QSPI_DUMMY_50 0
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
 #define LD1_Pin GPIO_PIN_0
 #define LD1_GPIO_Port GPIOB
+#define QUADSPI_WRITEPROT_Pin GPIO_PIN_9
+#define QUADSPI_WRITEPROT_GPIO_Port GPIOE
 #define LD3_Pin GPIO_PIN_14
 #define LD3_GPIO_Port GPIOB
 #define STLINK_RX_Pin GPIO_PIN_8
@@ -91,5 +86,5 @@ void Error_Handler(void);
 
 #endif /* __MAIN_H */
 
-#endif /* CYPRESS_QSPI_EXAMPLE */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+

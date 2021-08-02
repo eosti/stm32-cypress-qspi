@@ -1,7 +1,8 @@
 /* USER CODE BEGIN Header */
 /**
- * @example examplec
- * A simple example, based on the HAL_QSPI demo
+ * @example example.c
+ * @author  Reid Sox-Harris (@eosti)
+ * A simple interrupt-based example, based on the HAL_QSPI demo
  */
 #ifdef CYPRESS_QSPI_EXAMPLE
 /* USER CODE END Header */
@@ -33,7 +34,7 @@
 QSPI_HandleTypeDef hqspi;
 
 /* USER CODE BEGIN PV */
-// Volitile flags for callbacks
+// Volatile flags for callbacks
 __IO uint8_t CmdCplt, RxCplt, TxCplt, StatusMatch, TimeOut;
 
 // Buffer for transmission
@@ -117,7 +118,7 @@ int main(void)
 			}
 
 			// Erase the sector in blocking mode (short operation, only one command)
-			if	(Cypress_QSPI_SectorErase_IT(&hqspi, address) != HAL_OK)
+			if	(Cypress_QSPI_SectorErase(&hqspi, address) != HAL_OK)
 			{
 				Error_Handler();
 			}

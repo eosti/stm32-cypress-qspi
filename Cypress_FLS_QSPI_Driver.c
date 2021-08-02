@@ -22,9 +22,9 @@
 #include "Cypress_FLS_QSPI_Driver.h"
 
 /**
-* @brief    Enable write operations and wait until effective (blocking)
-* @param    hqspi: QSPI handle
-* @return   HAL status
+* @brief   Enable write operations and wait until effective (blocking)
+* @param   hqspi: QSPI handle
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_WriteEnable(QSPI_HandleTypeDef *hqspi)
@@ -57,9 +57,9 @@ HAL_StatusTypeDef Cypress_QSPI_WriteEnable(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Disable write operations, terminating any current operation
-* @param    hqspi: QSPI handle
-* @return   HAL status
+* @brief   Disable write operations, terminating any current operation
+* @param   hqspi: QSPI handle
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_WriteDisable(QSPI_HandleTypeDef *hqspi)
@@ -90,9 +90,9 @@ HAL_StatusTypeDef Cypress_QSPI_WriteDisable(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Check for program/erase error, and then recover by clearing the SR and disabling the write
-* @param    hqspi: QSPI handle
-* @return   HAL status
+* @brief   Check for program/erase error, and then recover by clearing the SR and disabling the write
+* @param   hqspi: QSPI handle
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ErrorRecovery(QSPI_HandleTypeDef *hqspi)
@@ -117,10 +117,10 @@ HAL_StatusTypeDef Cypress_QSPI_ErrorRecovery(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Polls the SR until the WIP bit is unset (blocking)
-* @param    hqspi: QSPI handle
-* @param    timeout: Time to wait before erroring out
-* @return   HAL status
+* @brief   Polls the SR until the WIP bit is unset (blocking)
+* @param   hqspi: QSPI handle
+* @param   timeout: Time to wait before erroring out
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_WaitMemReady(QSPI_HandleTypeDef *hqspi, uint32_t timeout)
@@ -168,10 +168,10 @@ HAL_StatusTypeDef Cypress_QSPI_WaitMemReady(QSPI_HandleTypeDef *hqspi, uint32_t 
 }
 
 /**
-* @brief    Polls the SR until the WIP bit is unset (non-blocking, requires interrupts)
-* @param    hqspi: QSPI handle
-* @return   HAL status
-* @remark   Calls HAL_QSPI_StatusMatchCallback when complete as an interrupt
+* @brief   Polls the SR until the WIP bit is unset (non-blocking, requires interrupts)
+* @param   hqspi: QSPI handle
+* @return  HAL status
+* @remark  Calls HAL_QSPI_StatusMatchCallback when complete as an interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_WaitMemReady_IT(QSPI_HandleTypeDef *hqspi)
@@ -219,10 +219,10 @@ HAL_StatusTypeDef Cypress_QSPI_WaitMemReady_IT(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Polls the SR until the WREN bit is set (blocking)
-* @param    hqspi: QSPI handle
-* @param    timeout: Time to wait before erroring out
-* @return   HAL status
+* @brief   Polls the SR until the WREN bit is set (blocking)
+* @param   hqspi: QSPI handle
+* @param   timeout: Time to wait before erroring out
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_WaitWriteReady(QSPI_HandleTypeDef *hqspi, uint32_t timeout)
@@ -270,9 +270,9 @@ HAL_StatusTypeDef Cypress_QSPI_WaitWriteReady(QSPI_HandleTypeDef *hqspi, uint32_
 }
 
 /**
-* @brief    Polls the SR until the WREN bit is set (non-blocking, requires interrupts)
-* @param    hqspi: QSPI handle
-* @return   HAL status
+* @brief   Polls the SR until the WREN bit is set (non-blocking, requires interrupts)
+* @param   hqspi: QSPI handle
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_WaitWriteReady_IT(QSPI_HandleTypeDef *hqspi)
@@ -320,10 +320,10 @@ HAL_StatusTypeDef Cypress_QSPI_WaitWriteReady_IT(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Reads SR1 to a variable
-* @param    hqspi: QSPI handle
-* @param    result: Location to store SR1
-* @return   HAL status
+* @brief   Reads SR1 to a variable
+* @param   hqspi: QSPI handle
+* @param   result: Location to store SR1
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ReadSR1(QSPI_HandleTypeDef *hqspi, uint8_t *result)
@@ -359,10 +359,10 @@ HAL_StatusTypeDef Cypress_QSPI_ReadSR1(QSPI_HandleTypeDef *hqspi, uint8_t *resul
 }
 
 /**
-* @brief    Reads SR2 to a variable
-* @param    hqspi: QSPI handle
-* @param    result: Location to store SR2
-* @return   HAL status
+* @brief   Reads SR2 to a variable
+* @param   hqspi: QSPI handle
+* @param   result: Location to store SR2
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ReadSR2(QSPI_HandleTypeDef *hqspi, uint8_t *result)
@@ -398,10 +398,10 @@ HAL_StatusTypeDef Cypress_QSPI_ReadSR2(QSPI_HandleTypeDef *hqspi, uint8_t *resul
 }
 
 /**
-* @brief    Reads the CR to a variable
-* @param    hqspi: QSPI handle
-* @param    result: Location to store the CR
-* @return   HAL status
+* @brief   Reads the CR to a variable
+* @param   hqspi: QSPI handle
+* @param   result: Location to store the CR
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ReadCR(QSPI_HandleTypeDef *hqspi, uint8_t *result)
@@ -437,9 +437,9 @@ HAL_StatusTypeDef Cypress_QSPI_ReadCR(QSPI_HandleTypeDef *hqspi, uint8_t *result
 }
 
 /**
-* @brief    Clears the Erase Fail and Program Fail flags
-* @param    hqspi: QSPI handle
-* @return   HAL status
+* @brief   Clears the Erase Fail and Program Fail flags
+* @param   hqspi: QSPI handle
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ClearSR(QSPI_HandleTypeDef *hqspi)
@@ -470,11 +470,11 @@ HAL_StatusTypeDef Cypress_QSPI_ClearSR(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Checks SR1 for program/erase errors
-* @param    hqspi: QSPI handle
-* @return   HAL status
-* @remark   Returns HAL_OK if no errors, HAL_ERROR if errors
-* @post If error, call \ref Cypress_QSPI_ErrorRecovery
+* @brief   Checks SR1 for program/erase errors
+* @param   hqspi: QSPI handle
+* @return  HAL status
+* @remark  Returns HAL_OK if no errors, HAL_ERROR if errors
+* @post    If error, call \ref Cypress_QSPI_ErrorRecovery
 */
 
 HAL_StatusTypeDef Cypress_QSPI_CheckForErrors(QSPI_HandleTypeDef *hqspi)
@@ -495,10 +495,10 @@ HAL_StatusTypeDef Cypress_QSPI_CheckForErrors(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Writes to SR1
-* @param    hqspi: QSPI handle
-* @param    sReg: status to write
-* @return   HAL status
+* @brief   Writes to SR1
+* @param   hqspi: QSPI handle
+* @param   sReg: status to write
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_WriteSR1(QSPI_HandleTypeDef *hqspi, uint8_t sReg)
@@ -541,10 +541,10 @@ HAL_StatusTypeDef Cypress_QSPI_WriteSR1(QSPI_HandleTypeDef *hqspi, uint8_t sReg)
 }
 
 /**
-* @brief    Writes to CR
-* @param    hqspi: QSPI handle
-* @param    cReg: configuration to write
-* @return   HAL status
+* @brief   Writes to CR
+* @param   hqspi: QSPI handle
+* @param   cReg: configuration to write
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_WriteCR(QSPI_HandleTypeDef *hqspi, uint8_t cReg)
@@ -596,11 +596,11 @@ HAL_StatusTypeDef Cypress_QSPI_WriteCR(QSPI_HandleTypeDef *hqspi, uint8_t cReg)
 }
 
 /**
-* @brief    Sets all bits in a sector to 1 (blocking)
-* @param    hqspi: QSPI handle
-* @param    address: address within the sector to erase
-* @return   HAL status
-* @post If error, call Cypress_QSPI_ErrorRecovery to clear errors
+* @brief   Sets all bits in a sector to 1 (blocking)
+* @param   hqspi: QSPI handle
+* @param   address: address within the sector to erase
+* @return  HAL status
+* @post    If error, call Cypress_QSPI_ErrorRecovery to clear errors
 */
 
 HAL_StatusTypeDef Cypress_QSPI_SectorErase(QSPI_HandleTypeDef *hqspi, uint32_t address)
@@ -646,12 +646,12 @@ HAL_StatusTypeDef Cypress_QSPI_SectorErase(QSPI_HandleTypeDef *hqspi, uint32_t a
 }
 
 /**
-* @brief    Sets all bits in a sector to 1 (non-blocking, requires interrupts)
-* @param    hqspi: QSPI handle
-* @param    address: address within the sector to erase
-* @return   HAL status
-* @post User should verify that no errors occurred after erase
-* @remark   Calls HAL_QSPI_StatusMatchCallback when complete via interrupt
+* @brief   Sets all bits in a sector to 1 (non-blocking, requires interrupts)
+* @param   hqspi: QSPI handle
+* @param   address: address within the sector to erase
+* @return  HAL status
+* @post    User should verify that no errors occurred after erase
+* @remark  Calls HAL_QSPI_StatusMatchCallback when complete via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_SectorErase_IT(QSPI_HandleTypeDef *hqspi, uint32_t address)
@@ -691,10 +691,10 @@ HAL_StatusTypeDef Cypress_QSPI_SectorErase_IT(QSPI_HandleTypeDef *hqspi, uint32_
 }
 
 /**
-* @brief    Sets *all* bits in the flash memory to 1 (blocking)
-* @param    hqspi: QSPI handle
-* @return   HAL status
-* @post If error, call Cypress_QSPI_ErrorRecovery to clear errors
+* @brief   Sets *all* bits in the flash memory to 1 (blocking)
+* @param   hqspi: QSPI handle
+* @return  HAL status
+* @post    If error, call Cypress_QSPI_ErrorRecovery to clear errors
 */
 
 HAL_StatusTypeDef Cypress_QSPI_BulkErase(QSPI_HandleTypeDef *hqspi)
@@ -736,11 +736,11 @@ HAL_StatusTypeDef Cypress_QSPI_BulkErase(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Sets *all* bits in the flash memory to 1 (non-blocking, requires interrupts)
-* @param    hqspi: QSPI handle
-* @return   HAL status
-* @post User should verify that no errors occurred after erase
-* @remark   Calls HAL_QSPI_StatusMatchCallback when complete via interrupt
+* @brief   Sets *all* bits in the flash memory to 1 (non-blocking, requires interrupts)
+* @param   hqspi: QSPI handle
+* @return  HAL status
+* @post    User should verify that no errors occurred after erase
+* @remark  Calls HAL_QSPI_StatusMatchCallback when complete via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_BulkErase_IT(QSPI_HandleTypeDef *hqspi)
@@ -781,12 +781,12 @@ HAL_StatusTypeDef Cypress_QSPI_BulkErase_IT(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Reads data into memory in SPI mode (blocking)
-* @param    hqspi: QSPI handle
-* @param    address: starting address to read
-* @param    dest: pointer to memory destination
-* @param    count: bytes to read
-* @return   HAL status
+* @brief   Reads data into memory in SPI mode (blocking)
+* @param   hqspi: QSPI handle
+* @param   address: starting address to read
+* @param   dest: pointer to memory destination
+* @param   count: bytes to read
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
@@ -822,13 +822,13 @@ HAL_StatusTypeDef Cypress_QSPI_Read(QSPI_HandleTypeDef *hqspi, uint32_t address,
 }
 
 /**
-* @brief    Reads data into memory in SPI mode (non-blocking, requires callbacks)
-* @param    hqspi: QSPI handle
-* @param    address: starting address to read
-* @param    dest: pointer to memory destination
-* @param    count: bytes to read
-* @return   HAL status
-* @remark   Calls HAL_QSPI_RxCpltCallback on completion via interrupt
+* @brief   Reads data into memory in SPI mode (non-blocking, requires callbacks)
+* @param   hqspi: QSPI handle
+* @param   address: starting address to read
+* @param   dest: pointer to memory destination
+* @param   count: bytes to read
+* @return  HAL status
+* @remark  Calls HAL_QSPI_RxCpltCallback on completion via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
@@ -865,13 +865,13 @@ HAL_StatusTypeDef Cypress_QSPI_Read_IT(QSPI_HandleTypeDef *hqspi, uint32_t addre
 }
 
 /**
-* @brief    Reads data directly into memory in SPI mode (non-blocking, requires callbacks)
-* @param    hqspi: QSPI handle
-* @param    address: starting address to read
-* @param    dest: pointer to memory destination
-* @param    count: bytes to read
-* @return   HAL status
-* @remark   Calls HAL_QSPI_RxCpltCallback on completion via interrupt
+* @brief   Reads data directly into memory in SPI mode (non-blocking, requires callbacks)
+* @param   hqspi: QSPI handle
+* @param   address: starting address to read
+* @param   dest: pointer to memory destination
+* @param   count: bytes to read
+* @return  HAL status
+* @remark  Calls HAL_QSPI_RxCpltCallback on completion via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
@@ -908,15 +908,15 @@ HAL_StatusTypeDef Cypress_QSPI_Read_DMA(QSPI_HandleTypeDef *hqspi, uint32_t addr
 }
 
 /**
-* @brief    Reads data into memory using QSPI (blocking)
-* @pre  CR1 must have CR1_QUAD set (0x02) to enable quad mode
-* @pre      The latency codes must be set appropriately, \ref QSPI_DUMMY
-* @param    hqspi: QSPI handle
-* @param    address: starting address to read
-* @param    dest: pointer to memory destination
-* @param    count: bytes to read
-* @return   HAL status
-* @note     this took me like 3 days to make work: it sends a mode byte as an alternate byte that is super-duper required
+* @brief   Reads data into memory using QSPI (blocking)
+* @pre     CR1 must have CR1_QUAD set (0x02) to enable quad mode
+* @pre     The latency codes must be set appropriately, \ref QSPI_DUMMY
+* @param   hqspi: QSPI handle
+* @param   address: starting address to read
+* @param   dest: pointer to memory destination
+* @param   count: bytes to read
+* @return  HAL status
+* @note    this took me like 3 days to make work: it sends a mode byte as an alternate byte that is super-duper required
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ReadQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
@@ -952,14 +952,58 @@ HAL_StatusTypeDef Cypress_QSPI_ReadQuad(QSPI_HandleTypeDef *hqspi, uint32_t addr
 }
 
 /**
-* @brief    Reads data into memory using QSPI (nonblocking, requires callbacks)
-* @pre  CR1 must have CR1_QUAD set (0x02) to enable quad mode
-* @param    hqspi: QSPI handle
-* @param    address: starting address to read
-* @param    dest: pointer to memory destination
-* @param    count: bytes to read
-* @return   HAL status
-* @remark   Calls HAL_QSPI_RxCpltCallback on completion via interrupt
+* @brief   Reads data into memory using QSPI (blocking)
+* @pre     CR1 must have CR1_QUAD set (0x02) to enable quad mode
+* @pre     The latency codes must be set appropriately, \ref QSPI_DUMMY
+* @param   hqspi: QSPI handle
+* @param   address: starting address to read
+* @param   dest: pointer to memory destination
+* @param   count: bytes to read
+* @return  HAL status
+* @note    This is an alternate version of ReadQuad that only uses one line for the address and no mode bits
+*/
+
+HAL_StatusTypeDef Cypress_QSPI_ReadQuadAlt(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
+{
+    QSPI_CommandTypeDef sCommand;
+
+    sCommand.Instruction        = QUAD_OUT_FAST_READ_4_BYTE_ADDR_CMD;
+    sCommand.Address            = address;
+    sCommand.AlternateBytes     = 0;
+    sCommand.AddressSize        = QSPI_ADDRESS_32_BITS;
+    sCommand.AlternateBytesSize = QSPI_ALTERNATE_BYTES_8_BITS;
+    sCommand.DummyCycles        = CYPRESS_DUMMY_CLOCK_CYCLES_READ_QUAD;
+    sCommand.InstructionMode    = QSPI_INSTRUCTION_1_LINE;
+    sCommand.AddressMode        = QSPI_ADDRESS_1_LINE;
+    sCommand.AlternateByteMode  = QSPI_ALTERNATE_BYTES_NONE;
+    sCommand.DataMode           = QSPI_DATA_4_LINES;
+    sCommand.NbData             = count;
+    sCommand.DdrMode            = QSPI_DDR_MODE_DISABLE;
+    sCommand.DdrHoldHalfCycle   = QSPI_DDR_HHC_ANALOG_DELAY;
+    sCommand.SIOOMode           = QSPI_SIOO_INST_EVERY_CMD;
+
+    if  (HAL_QSPI_Command(hqspi, &sCommand, HAL_QSPI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    if (HAL_QSPI_Receive(hqspi, dest, HAL_QPSI_TIMEOUT_DEFAULT_VALUE) != HAL_OK)
+    {
+        return HAL_ERROR;
+    }
+
+    return HAL_OK;
+}
+
+/**
+* @brief   Reads data into memory using QSPI (nonblocking, requires callbacks)
+* @pre     CR1 must have CR1_QUAD set (0x02) to enable quad mode
+* @param   hqspi: QSPI handle
+* @param   address: starting address to read
+* @param   dest: pointer to memory destination
+* @param   count: bytes to read
+* @return  HAL status
+* @remark  Calls HAL_QSPI_RxCpltCallback on completion via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ReadQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
@@ -996,14 +1040,14 @@ HAL_StatusTypeDef Cypress_QSPI_ReadQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t a
 }
 
 /**
-* @brief    Reads data directly into memory using QSPI (nonblocking, requires callbacks)
-* @pre  CR1 must have CR1_QUAD set (0x02) to enable quad mode
-* @param    hqspi: QSPI handle
-* @param    address: starting address to read
-* @param    dest: pointer to memory destination
-* @param    count: bytes to read
-* @return   HAL status
-* @remark   Calls HAL_QSPI_RxCpltCallback on completion via interrupt
+* @brief   Reads data directly into memory using QSPI (nonblocking, requires callbacks)
+* @pre     CR1 must have CR1_QUAD set (0x02) to enable quad mode
+* @param   hqspi: QSPI handle
+* @param   address: starting address to read
+* @param   dest: pointer to memory destination
+* @param   count: bytes to read
+* @return  HAL status
+* @remark  Calls HAL_QSPI_RxCpltCallback on completion via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ReadQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *dest, uint32_t count)
@@ -1040,12 +1084,12 @@ HAL_StatusTypeDef Cypress_QSPI_ReadQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t 
 }
 
 /**
-* @brief    Writes data into a page in SPI mode (blocking)
-* @param    hqspi: QSPI handle
-* @param    address: page to write
-* @param    src: pointer to data to write
-* @param    count: bytes to write
-* @return   HAL status
+* @brief   Writes data into a page in SPI mode (blocking)
+* @param   hqspi: QSPI handle
+* @param   address: page to write
+* @param   src: pointer to data to write
+* @param   count: bytes to write
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_Program(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count)
@@ -1088,14 +1132,14 @@ HAL_StatusTypeDef Cypress_QSPI_Program(QSPI_HandleTypeDef *hqspi, uint32_t addre
 }
 
 /**
-* @brief    Writes data into a page in SPI mode (nonblocking, requires callbacks)
-* @param    hqspi: QSPI handle
-* @param    address: page to write
-* @param    src: pointer to data to write
-* @param    count: bytes to write
-* @return   HAL status
-* @post     User should verify that no errors were raised after the write
-* @remark   Calls HAL_QSPI_TxCpltCallback on completion via interrupt
+* @brief   Writes data into a page in SPI mode (nonblocking, requires callbacks)
+* @param   hqspi: QSPI handle
+* @param   address: page to write
+* @param   src: pointer to data to write
+* @param   count: bytes to write
+* @return  HAL status
+* @post    User should verify that no errors were raised after the write
+* @remark  Calls HAL_QSPI_TxCpltCallback on completion via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_Program_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count)
@@ -1135,14 +1179,14 @@ HAL_StatusTypeDef Cypress_QSPI_Program_IT(QSPI_HandleTypeDef *hqspi, uint32_t ad
 }
 
 /**
-* @brief    Writes data into a page in SPI mode (nonblocking, requires callbacks)
-* @param    hqspi: QSPI handle
-* @param    address: page to write
-* @param    src: pointer to data to write
-* @param    count: bytes to write
-* @return   HAL status
-* @post     User should verify that no errors were raised after the write
-* @remark   Calls HAL_QSPI_TxCpltCallback on completion via interrupt
+* @brief   Writes data into a page in SPI mode (nonblocking, requires callbacks)
+* @param   hqspi: QSPI handle
+* @param   address: page to write
+* @param   src: pointer to data to write
+* @param   count: bytes to write
+* @return  HAL status
+* @post    User should verify that no errors were raised after the write
+* @remark  Calls HAL_QSPI_TxCpltCallback on completion via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_Program_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count)
@@ -1182,13 +1226,13 @@ HAL_StatusTypeDef Cypress_QSPI_Program_DMA(QSPI_HandleTypeDef *hqspi, uint32_t a
 }
 
 /**
-* @brief    Writes data into a page using QSPI (blocking)
-* @pre  CR1 must have CR1_QUAD set (0x02) to enable quad mode
-* @param    hqspi: QSPI handle
-* @param    address: page to write
-* @param    src: pointer to data to write
-* @param    count: bytes to write
-* @return   HAL status
+* @brief   Writes data into a page using QSPI (blocking)
+* @pre     CR1 must have CR1_QUAD set (0x02) to enable quad mode
+* @param   hqspi: QSPI handle
+* @param   address: page to write
+* @param   src: pointer to data to write
+* @param   count: bytes to write
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ProgramQuad(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count)
@@ -1231,15 +1275,15 @@ HAL_StatusTypeDef Cypress_QSPI_ProgramQuad(QSPI_HandleTypeDef *hqspi, uint32_t a
 }
 
 /**
-* @brief    Writes data into a page using QSPI (non-blocking, requires callbacks)
-* @pre  CR1 must have CR1_QUAD set (0x02) to enable quad mode
-* @param    hqspi: QSPI handle
-* @param    address: page to write
-* @param    src: pointer to data to write
-* @param    count: bytes to write
-* @return   HAL status
-* @post     User should verify that no errors were raised after the write
-* @remark   Calls HAL_QSPI_TxCpltCallback on completion via interrupt
+* @brief   Writes data into a page using QSPI (non-blocking, requires callbacks)
+* @pre     CR1 must have CR1_QUAD set (0x02) to enable quad mode
+* @param   hqspi: QSPI handle
+* @param   address: page to write
+* @param   src: pointer to data to write
+* @param   count: bytes to write
+* @return  HAL status
+* @post    User should verify that no errors were raised after the write
+* @remark  Calls HAL_QSPI_TxCpltCallback on completion via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count)
@@ -1279,15 +1323,15 @@ HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_IT(QSPI_HandleTypeDef *hqspi, uint32_
 }
 
 /**
-* @brief    Writes data into a page using QSPI (non-blocking, requires callbacks)
-* @pre  CR1 must have CR1_QUAD set (0x02) to enable quad mode
-* @param    hqspi: QSPI handle
-* @param    address: page to write
-* @param    src: pointer to data to write
-* @param    count: bytes to write
-* @return   HAL status
-* @post     User should verify that no errors were raised after the write
-* @remark   Calls HAL_QSPI_TxCpltCallback on completion via interrupt
+* @brief   Writes data into a page using QSPI (non-blocking, requires callbacks)
+* @pre     CR1 must have CR1_QUAD set (0x02) to enable quad mode
+* @param   hqspi: QSPI handle
+* @param   address: page to write
+* @param   src: pointer to data to write
+* @param   count: bytes to write
+* @return  HAL status
+* @post    User should verify that no errors were raised after the write
+* @remark  Calls HAL_QSPI_TxCpltCallback on completion via interrupt
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32_t address, uint8_t *src, uint32_t count)
@@ -1327,9 +1371,9 @@ HAL_StatusTypeDef Cypress_QSPI_ProgramQuad_DMA(QSPI_HandleTypeDef *hqspi, uint32
 }
 
 /**
-* @brief    Resets device to power-up state
-* @param    hqspi: QSPI handle
-* @return   HAL status
+* @brief   Resets device to power-up state
+* @param   hqspi: QSPI handle
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi)
@@ -1360,9 +1404,9 @@ HAL_StatusTypeDef Cypress_QSPI_Reset(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Forces device into normal mode after continuous high performance read mode
-* @param    hqspi: QSPI handle
-* @return   HAL status
+* @brief   Forces device into normal mode after continuous high performance read mode
+* @param   hqspi: QSPI handle
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi)
@@ -1393,10 +1437,10 @@ HAL_StatusTypeDef Cypress_QSPI_ModeBitReset(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Sets all configuration to default
-* @warn This will unset the QUAD bit and may result in write protection being set; see \ref Cypress_QSPI_DisableWP
-* @param    hqspi: QSPI handle
-* @return   HAL status
+* @brief   Sets all configuration to default
+* @warn    This will unset the QUAD bit and may result in write protection being set; see \ref Cypress_QSPI_DisableWP
+* @param   hqspi: QSPI handle
+* @return  HAL status
 */
 
 HAL_StatusTypeDef Cypress_QSPI_ResetConfiguration(QSPI_HandleTypeDef *hqspi)
@@ -1437,14 +1481,14 @@ HAL_StatusTypeDef Cypress_QSPI_ResetConfiguration(QSPI_HandleTypeDef *hqspi)
 }
 
 /**
-* @brief    Disables Write Protection
-* @note When the QUAD bit is not set, IO2/WP acts as a write protect.
-* @note When IO2/WP is low, it will disable programs, writes, and modifying the registers.
-* @note The suggested use of this function is to use it to enable the QUAD bit, therefore disabling the WP input, and then restoring the pin using \ref Cypress_QSPI_ResetWP
-* @pre      Set the User Label of pin IO2 to QUADSPI_WRITEPROT in the configurator
-* @param    GPIO_Port: QUADSPI_WRITEPROT_GPIO_Port (if User Label set)
-* @param    GPIO_Pin: QUADSPI_WRITEPROT_Pin (if User Label set)
-* @warning  This will \b disable QSPI functionality. However, SPI and configuration operations (single data line, single address line) are available.
+* @brief   Disables Write Protection
+* @note    When the QUAD bit is not set, IO2/WP acts as a write protect.
+* @note    When IO2/WP is low, it will disable programs, writes, and modifying the registers.
+* @note    The suggested use of this function is to use it to enable the QUAD bit, therefore disabling the WP input, and then restoring the pin using \ref Cypress_QSPI_ResetWP
+* @pre     Set the User Label of pin IO2 to QUADSPI_WRITEPROT in the configurator
+* @param   GPIO_Port: QUADSPI_WRITEPROT_GPIO_Port (if User Label set)
+* @param   GPIO_Pin: QUADSPI_WRITEPROT_Pin (if User Label set)
+* @warning This will \b disable QSPI functionality. However, SPI and configuration operations (single data line, single address line) are available.
 * @warning To re-enable QSPI functionality, use \ref Cypress_QSPI_ResetWP
 */
 
@@ -1466,12 +1510,12 @@ void Cypress_QSPI_DisableWP(GPIO_TypeDef *GPIO_Port, uint32_t GPIO_Pin)
 }
 
 /**
-* @brief    Resets write protection pin
-* @note Used to restore \ref Cypress_QSPI_DisableWP
-* @note This will re-enable QSPI operations
-* @pre      Set the User Label of pin IO2 to QUADSPI_WRITEPROT in the configurator
-* @param    GPIO_Port: QUADSPI_WRITEPROT_GPIO_Port (if User Label set)
-* @param    GPIO_Pin: QUADSPI_WRITEPROT_Pin (if User Label set)
+* @brief   Resets write protection pin
+* @note    Used to restore \ref Cypress_QSPI_DisableWP
+* @note    This will re-enable QSPI operations
+* @pre     Set the User Label of pin IO2 to QUADSPI_WRITEPROT in the configurator
+* @param   GPIO_Port: QUADSPI_WRITEPROT_GPIO_Port (if User Label set)
+* @param   GPIO_Pin: QUADSPI_WRITEPROT_Pin (if User Label set)
 */
 
 void Cypress_QSPI_ResetWP(GPIO_TypeDef *GPIO_Port, uint32_t GPIO_Pin)
